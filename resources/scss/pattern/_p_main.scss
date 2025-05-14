@@ -1,0 +1,453 @@
+// 메인 페이지 스타일
+.inner {
+  position: relative;
+  width: 100%;
+  max-width: $grid;
+  margin: 0 auto;
+  padding: 0 $p-mobile;
+
+  @include tablet {
+    padding: 0 $p-tablet;
+  }
+
+  @media (max-width: 1440px) {
+    max-width: 1200px;
+  }
+
+  @media (max-width: 1024px) {
+    max-width: 100%;
+  }
+}
+// intro 섹션
+.intro {
+  .intro-content {
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(150%);
+  }
+
+  .title-wrap {
+    h2 {
+      color: $primary;
+      font-size: 33rem;
+      font-family: $font-family-title;
+      font-weight: 500;
+      line-height: 1;
+      overflow: hidden;
+      letter-spacing: -5px;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .content-wrap {
+    transform: translateY(-20px);
+
+    h3 {
+      font-size: 6rem;
+      color: $white;
+    }
+    p {
+      font-size: 1.6rem;
+      color: $primary;
+    }
+  }
+}
+
+// hero 섹션
+.hero {
+  h2 {
+    font-size: 20rem;
+    font-family: $font-family-title;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -10px;
+    transform: translateY(20px);
+  }
+
+  .hero-title {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-subtitle {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .hero-line {
+      width: 600px;
+      height: 140px;
+      background: $gray-90;
+      transition: all 0.5s ease;
+    }
+  }
+
+  .hero-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .hero-highlight {
+      transform: translateX(30px);
+    }
+    .hero-description {
+      transform: translateX(-50px) translateY(-40px);
+    }
+  }
+}
+
+// about 섹션
+.about {
+  .about-title {
+    h2 {
+      font-family: $font-family-title;
+      font-weight: 500;
+      color: $primary;
+      font-size: 15rem;
+      line-height: 270px;
+    }
+  }
+
+  .about-content {
+    display: flex;
+    justify-content: space-around;
+
+    .profile-image {
+      width: 400px;
+      height: 600px;
+    }
+
+    .about-info {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto;
+      column-gap: 100px;
+      margin-top: 50px;
+
+      h3 {
+        font-size: 2.5rem;
+        color: $primary;
+        margin-bottom: 20px;
+      }
+
+      .profile-info,
+      .education-info,
+      .license-info {
+        .info-item {
+          display: flex;
+          border-bottom: 1px solid $gray-80;
+          justify-content: space-between;
+          align-items: center;
+
+          .info-label {
+            font-size: 1.8rem;
+            color: $gray-60;
+            margin-right: 30px;
+          }
+          .info-value {
+            font-size: 2rem;
+            color: $gray-10;
+          }
+        }
+      }
+      .skills-info {
+        .skills-list {
+          margin-bottom: 5px;
+        }
+      }
+
+      span {
+        img {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+//about-motion 섹션
+.about-motion {
+  background: #fff;
+  padding: 10rem 2rem;
+  text-align: center;
+
+  .about-motion-title h2 {
+    display: inline-block;
+    font-family: $font-family-title;
+    font-size: 10rem;
+    font-weight: bold;
+    line-height: 1.6;
+  }
+}
+
+// skills 섹션
+.skills {
+  .skills-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .section-title {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    font-family: $font-family-title;
+    font-weight: 500;
+    color: $gray-90;
+    font-size: 12rem;
+    line-height: 270px;
+  }
+  .skills-list {
+    display: flex;
+    gap: 40px;
+
+    .skill-item,
+    .skill-item2,
+    .skill-item3 {
+      padding: 80px 0;
+
+      .skill-chart {
+        position: relative;
+        background-color: rgba(17, 17, 17, 0.3);
+        width: 300px;
+        height: 300px;
+        margin-bottom: 35px;
+        border-radius: 20px;
+        color: $gray-0;
+
+        svg {
+          width: 150px;
+          height: 150px;
+          @include posXY;
+
+          circle {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke-width: 10;
+            stroke: rgba(255, 255, 255, 0.05);
+            transform: translate(5px, 5px);
+            stroke-linecap: round;
+          }
+        }
+
+        .skill-percentage {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, 230%);
+          h2 {
+            font-size: 2.5rem;
+          }
+          span {
+            font-size: 1.5rem;
+          }
+        }
+
+        .skill-name {
+          @include posXY;
+          font-size: 3rem;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .skill-item {
+      .skill-chart {
+        circle:nth-child(2) {
+          stroke: $white;
+          stroke-dasharray: 440px;
+          stroke-dashoffset: 440px;
+        }
+        circle:nth-child(2) {
+          stroke-dashoffset: calc(440px - (440px * 90) / 100);
+        }
+      }
+    }
+    .skill-item2 {
+      .skill-chart {
+        circle:nth-child(2) {
+          stroke: $white;
+          stroke-dasharray: 440px;
+          stroke-dashoffset: 440px;
+        }
+        circle:nth-child(2) {
+          stroke-dashoffset: calc(440px - (440px * 90) / 100);
+        }
+      }
+    }
+    .skill-item3 {
+      .skill-chart {
+        circle:nth-child(2) {
+          stroke: $white;
+          stroke-dasharray: 440px;
+          stroke-dashoffset: 440px;
+        }
+        circle:nth-child(2) {
+          stroke-dashoffset: calc(440px - (440px * 90) / 100);
+        }
+      }
+    }
+  }
+}
+
+// bokjak, popmart, gucci, hanatour 섹션 <공통스타일>
+.bokjak,
+.popmart,
+.gucci,
+.hanatour {
+  color: $gray-0;
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0;
+
+  .inner {
+    display: flex;
+    justify-content: space-between;
+  }
+  .project-description {
+    padding-top: 250px;
+
+    .project-type {
+      font-size: 2.3rem;
+    }
+    .project-title {
+      font-family: $font-family-title;
+      letter-spacing: -10px;
+      font-size: 10rem;
+      font-weight: 500;
+    }
+
+    .contribution {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+
+      span {
+        font-size: 3rem;
+      }
+    }
+
+    .project-summary {
+      width: 60%;
+      margin-bottom: 30px;
+    }
+
+    .view-project-button {
+      color: $gray-0;
+      margin-bottom: 20px;
+
+      span {
+        border: 2px solid $gray-0;
+        padding: 5px 20px;
+        border-radius: 40px;
+        font-size: 3rem;
+      }
+    }
+  }
+  .project-progress {
+    span {
+      font-size: 3.5rem;
+      .point {
+        font-size: 5rem;
+      }
+    }
+  }
+}
+
+// bokjak 섹션
+.bokjak {
+  background-image: url("../../images/component/common/bokjak.png");
+}
+
+// popmart 섹션
+.popmart {
+  background-image: url("../../images/component/common/popmart.png");
+}
+
+// gucci 섹션
+.gucci {
+  background-image: url("../../images/component/common/gucci.png");
+}
+
+// hanatour 섹션
+.hanatour {
+  background-image: url("../../images/component/common/hanatour.png");
+}
+
+// contact-intro 섹션
+.contact-intro {
+  h2 {
+    height: 100vh;
+    @include flexCenter;
+    font-size: 20rem;
+    font-weight: bold;
+  }
+}
+
+// contact-details 섹션
+.contact-details {
+  color: $gray-0;
+
+  .contact-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 100px 0 50px;
+
+    .contact-direct {
+      .contact-email {
+        font-size: 6rem;
+        margin-bottom: 30px;
+      }
+      .contact-phone {
+        color: $gray-40;
+        font-size: 3rem;
+      }
+    }
+    .contact-info {
+      width: 35%;
+      margin-top: 30px;
+
+      .info-item {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid $gray-70;
+        margin-bottom: 10px;
+
+        .info-label {
+          font-size: 3rem;
+          color: $gray-60;
+        }
+        .info-value {
+          font-size: 3.2rem;
+        }
+      }
+    }
+  }
+
+  a {
+    display: flex;
+    justify-content: flex-start;
+    color: $gray-0;
+  }
+
+  .contact-footer {
+    display: flex;
+    font-family: $font-family-title;
+    letter-spacing: -10px;
+    font-weight: 500;
+    font-size: 38rem;
+    align-items: flex-end;
+    justify-content: center;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    line-height: 1;
+    overflow: hidden;
+    padding: 155px 0 0;
+  }
+}

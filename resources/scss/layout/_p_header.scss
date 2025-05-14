@@ -1,0 +1,63 @@
+/* 공통 스타일 */
+$transition-ease: 0.3s ease;
+
+a {
+  text-decoration: none;
+  display: block;
+  transition: color $transition-ease;
+}
+
+#header {
+  position: relative;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: $gray-90;
+  transition: background $transition-ease;
+
+  .inner {
+    height: $hdH;
+    transition: height $transition-ease;
+
+    h1 {
+      a {
+        p {
+          font-size: 2rem;
+          font-weight: bold;
+          color: $white;
+          letter-spacing: 2px;
+        }
+      }
+    }
+
+    .header-wrapper {
+      height: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+.gnb {
+  display: flex;
+
+  > li {
+    position: relative;
+
+    a {
+      width: 140px;
+      line-height: 40px;
+      font-size: 1.6rem;
+      font-weight: 500;
+      text-align: end;
+      color: $white;
+      transition: $transition-ease;
+
+      &:hover {
+        font-weight: $font-bold;
+        scale: 1.2;
+      }
+    }
+  }
+}

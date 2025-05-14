@@ -1,0 +1,70 @@
+// 변수 설정
+
+$white: #fff;
+$black: #000;
+
+// Primary colors
+$primary: #fbf0da;
+
+// Secondary colors
+$secondary: #3c4c7d;
+
+// Grayscale
+$gray-0: #ffffff; // 배경 기본값
+$gray-5: #f8f8f8; // background
+$gray-10: #f5f5f5; // 연한 배경 컬러
+$gray-20: #e0e0e0; // 디테일 강조
+$gray-40: #bdbdbd; // 보더 컬러
+$gray-60: #757575; // 텍스트 기본 상태
+$gray-70: #555555; // text-body, detail text
+$gray-80: #2c2c2c; // 제목, 강조 텍스트
+$gray-90: #111111;
+$gray-100: #000000; // 메인 블랙
+
+// Grayscale
+// $gray-0: #ffffff; // background-base
+// $gray-5: #f8f8f8; // background
+// $gray-10: #f0f0f0;
+// $gray-20: #e4e4e4; // disabled
+// $gray-30: #d8d8d8;
+// $gray-40: #c6c6c6; // border
+// $gray-50: #8e8e8e; // text-disabled
+// $gray-60: #717171; // 입력창 기본 상태
+// $gray-70: #555555; // text-body, detail text
+// $gray-80: #2d2d2d;
+// $gray-90: #1d1d1d; // text-title
+// $gray-100: #000000;
+
+//font weight
+$font-light: 300 !default;
+$font-normal: 400 !default;
+$font-medium: 500 !default;
+$font-semibold: 600 !default;
+$font-bold: 700 !default;
+$font-bolder: 800 !default;
+// font-style
+$font-family-base: "Pretendard", sans-serif !default;
+$font-family-title: "PPFragment-GlareRegular", sans-serif !default;
+$font-size-root: 62.5% !default; //10px 1rem으로 설정
+$font-size-base: 1.7rem !default;
+$font-color-base: $gray-90 !default;
+$font-weight-base: $font-normal !default;
+
+//line height style
+$line-height-none: 1 !default;
+$line-height-base: 1.5 !default;
+
+//padding style
+$grid: 1640px !default;
+$p-tablet: 30px !default;
+$p-mobile: 20px !default;
+
+$hdH: 80px;
+$hdH-xl: 80px;
+
+$ftH: 70px;
+
+//breakpoints
+$breakpoint-sm: 600px !default;
+$breakpoint-md: 1024px !default;
+$breakpoint-lg: 1920px !default;
