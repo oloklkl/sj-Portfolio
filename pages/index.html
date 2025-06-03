@@ -30,6 +30,7 @@
     <script defer src="../resources/js/ui-swiper.js"></script>
     <script defer src="../resources/js/scrollTrigger.js"></script>
     <script defer src="../resources/js/text-motion.js"></script>
+    <script defer src="../resources/js/contactAnimation.js"></script>
   </head>
   <body>
     <div id="skip-nav">
@@ -39,25 +40,25 @@
     <div id="wrap">
       <header id="header" include-html="./layout/header.html"></header>
 
-      <!-- intro -->
-      <section class="intro">
-        <div class="inner">
-          <div class="intro-content">
-            <div class="title-wrap">
-              <h2>EVOLVE</h2>
-            </div>
-            <div class="content-wrap">
-              <h3>SJ</h3>
-              <p>Crafting intuitive,</p>
-              <p>interactive web experiences</p>
-              <p>with a passion for design</p>
-              <p>and innovation.</p>
+      <main id="container">
+        <!-- intro -->
+        <section class="intro">
+          <div class="inner">
+            <div class="intro-content">
+              <div class="title-wrap">
+                <h2>EVOLVE</h2>
+              </div>
+              <div class="content-wrap">
+                <h3>SJ</h3>
+                <p>Crafting intuitive,</p>
+                <p>interactive web experiences</p>
+                <p>with a passion for design</p>
+                <p>and innovation.</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <main id="container">
         <!-- hero -->
         <section class="hero">
           <div class="inner">
@@ -79,7 +80,7 @@
         </section>
 
         <!-- about -->
-        <section class="about">
+        <section class="about" id="about">
           <div class="inner">
             <div class="about-title">
               <h2>ABOUT ME</h2>
@@ -169,7 +170,6 @@
         </section>
 
         <!-- about-motion -->
-
         <section class="about-motion">
           <div class="inner">
             <div class="about-motion-title">
@@ -200,7 +200,7 @@
           </div>
         </section>
 
-        <section class="skills">
+        <section class="skills" id="skills">
           <div class="inner">
             <div class="skills-container">
               <h2 class="section-title">SKILLS</h2>
@@ -336,7 +336,7 @@
           </div>
         </section>
 
-        <section class="bokjak">
+        <section class="bokjak" id="project">
           <div class="inner">
             <div class="project-description">
               <h3 class="project-type">TEAM PROJECT</h3>
@@ -373,7 +373,8 @@
               <h3 class="project-type">PERSONAL PROJECT</h3>
               <h2 class="project-title">GUCCI</h2>
               <p class="contribution">기여도 <span>100%</span></p>
-              <p class="project-summary">"GUCCI 작업중"</p>
+              <p class="project-summary">GUCCI 공식 웹사이트를 리디자인한 개인 프로젝트입니다. 고급스러운 브랜드 아이덴티티를 반영해 정제된 레이아웃과 타이포그래피를 적용했으며, HTML, SCSS, JavaScript로 개발했습니다. 키비주얼 섹션에는 GSAP 애니메이션을 활용해 브랜드의 프리미엄 감성을 시각적으로 표현했고, 반응형 웹으로 다양한 디바이스에서도 일관된 사용자 경험을 제공합니다.</p>
+
               <a href="https://bokjak-project.netlify.app/" class="view-project-button"><span>View project</span></a>
             </div>
             <div class="project-progress">
@@ -397,38 +398,50 @@
           </div>
         </section>
 
-        <section class="contact-intro">
-          <div class="inner">
-            <h2 class="contact-title">CONTACT ME!</h2>
-          </div>
-        </section>
-
-        <section class="contact-details">
-          <div class="inner">
-            <div class="contact-wrapper">
-              <div class="contact-direct">
-                <h3 class="contact-email">76seongju@gmail.com</h3>
-                <p class="contact-phone">+82) 10-4123-4598</p>
-              </div>
-              <div class="contact-info">
-                <div class="info-item">
-                  <span class="info-label">Name</span>
-                  <span class="info-value">Jo Seong Ju</span>
-                </div>
-                <div class="info-item">
-                  <span class="info-label">Email</span>
-                  <span class="info-value">76seongju@gmail.com</span>
-                </div>
-                <div class="info-item">
-                  <span class="info-label">Message</span>
-                  <span class="info-value">Contact Me!</span>
-                </div>
-              </div>
+        <div class="contact-section-wrapper">
+          <section class="contact-intro" id="contact">
+            <div class="inner">
+              <h2 class="contact-title">
+                <span class="top">CONTACT</span>
+                <span class="bottom">ME!</span>
+              </h2>
             </div>
-            <a href="https://github.com/oloklkl?tab=repositories">Github&nbsp;<span class="material-icons"> north_east </span></a>
-          </div>
-          <h2 class="contact-footer">SEONG JU</h2>
-        </section>
+          </section>
+
+          <!-- <div class="contact-overlay"></div> -->
+
+          <section class="contact-details" id="contact-details">
+            <div class="inner">
+              <div class="contact-wrapper">
+                <div class="contact-direct">
+                  <h3 class="contact-email">76seongju@gmail.com</h3>
+                  <p class="contact-phone">+82) 10-4123-4598</p>
+                </div>
+                <div class="contact-info">
+                  <div class="info-item">
+                    <span class="info-label">Name</span>
+                    <span class="info-value">Jo Seong Ju</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Email</span>
+                    <span class="info-value">76seongju@gmail.com</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Message</span>
+                    <span class="info-value">Contact Me!</span>
+                  </div>
+                </div>
+              </div>
+              <a href="https://github.com/oloklkl?tab=repositories">
+                <div class="text-wrapper">
+                  <div class="text-top">Github&nbsp;<span class="material-icons">north_east</span></div>
+                  <div class="text-bottom">Github&nbsp;<span class="material-icons">north_east</span></div>
+                </div>
+              </a>
+            </div>
+            <h2 class="contact-footer">SEONG JU</h2>
+          </section>
+        </div>
       </main>
     </div>
   </body>
