@@ -1,4 +1,5 @@
 // 메인 페이지 스타일
+
 .inner {
   position: relative;
   width: 100%;
@@ -18,6 +19,7 @@
     max-width: 100%;
   }
 }
+
 // intro 섹션
 .intro {
   .intro-content {
@@ -382,16 +384,81 @@
 
 // contact-intro 섹션
 .contact-intro {
-  h2 {
-    height: 100vh;
-    @include flexCenter;
-    font-size: 20rem;
-    font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary;
+  overflow: hidden;
+  z-index: 50;
+
+  .inner {
+    display: flex;
+    width: 100%;
+    justify-content: center;
   }
+
+  .contact-title {
+    font-size: 25rem;
+    font-weight: bold;
+
+    span {
+      display: block;
+      transition: transform 1s ease, opacity 1s ease;
+    }
+
+    .top {
+      transform-origin: bottom;
+    }
+
+    .bottom {
+      display: flex;
+      justify-content: center;
+      transform-origin: top;
+    }
+
+    &.split {
+      .top {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+
+      .bottom {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.contact-intro.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+.contact-overlay {
+  position: fixed;
+  top: 50%; // 🚀 중앙에서 시작
+  left: 0;
+  transform: translateY(-50%);
+  width: 100vw;
+  height: 0vh; // 🚀 처음엔 높이가 없음
+  background-color: $gray-90;
+  transition: height 0.8s ease-out;
+  z-index: 10;
+}
+
+.contact-intro:hover .contact-overlay {
+  opacity: 1; // 해당 섹션에서만 보이도록 조정
 }
 
 // contact-details 섹션
 .contact-details {
+  position: relative;
+  z-index: 1;
   color: $gray-0;
 
   .contact-wrapper {
@@ -431,9 +498,52 @@
   }
 
   a {
+    position: relative;
     display: flex;
-    justify-content: flex-start;
     color: $gray-0;
+    font-size: 3rem;
+
+    .text-wrapper {
+      position: relative;
+      display: inline-block;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .text-top,
+    .text-bottom {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      pointer-events: auto;
+    }
+
+    .text-top {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .text-bottom {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    &:hover {
+      .text-top {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+
+      .text-bottom {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
   }
 
   .contact-footer {

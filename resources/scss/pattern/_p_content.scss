@@ -1,1 +1,15 @@
 // 스와이퍼, 카드, 콘텐츠 배치용
+
+//sectionSwiper 스와이퍼
+.sectionSwiper {
+  width: 100%;
+  height: 100%;
+
+  .swiper-slide {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}

@@ -308,8 +308,9 @@ legend {
 
 .intro {
   width: 100%;
-  height: calc(100vh - 80px);
+  height: 100vh;
   background-color: #111111;
+  box-sizing: border-box;
 }
 
 .hero {
@@ -348,6 +349,10 @@ legend {
 .hanatour {
   width: 100%;
   height: 100vh;
+}
+
+.contact-section-wrapper {
+  position: relative;
 }
 
 .contact-intro {
@@ -730,16 +735,72 @@ legend {
   background-image: url("../../images/component/common/hanatour.png");
 }
 
-.contact-intro h2 {
-  height: 100vh;
+.contact-intro {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20rem;
+  background-color: #fbf0da;
+  overflow: hidden;
+  z-index: 50;
+}
+.contact-intro .inner {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.contact-intro .contact-title {
+  font-size: 25rem;
   font-weight: bold;
+}
+.contact-intro .contact-title span {
+  display: block;
+  transition: transform 1s ease, opacity 1s ease;
+}
+.contact-intro .contact-title .top {
+  transform-origin: bottom;
+}
+.contact-intro .contact-title .bottom {
+  display: flex;
+  justify-content: center;
+  transform-origin: top;
+}
+.contact-intro .contact-title.split .top {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.contact-intro .contact-title.split .bottom {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.contact-intro.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+.contact-overlay {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100vw;
+  height: 0vh;
+  background-color: #111111;
+  transition: height 0.8s ease-out;
+  z-index: 10;
+}
+
+.contact-intro:hover .contact-overlay {
+  opacity: 1;
 }
 
 .contact-details {
+  position: relative;
+  z-index: 1;
   color: #ffffff;
 }
 .contact-details .contact-wrapper {
@@ -773,9 +834,44 @@ legend {
   font-size: 3.2rem;
 }
 .contact-details a {
+  position: relative;
   display: flex;
-  justify-content: flex-start;
   color: #ffffff;
+  font-size: 3rem;
+}
+.contact-details a .text-wrapper {
+  position: relative;
+  display: inline-block;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  pointer-events: none;
+}
+.contact-details a .text-top,
+.contact-details a .text-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  pointer-events: auto;
+}
+.contact-details a .text-top {
+  transform: translateY(0);
+  opacity: 1;
+}
+.contact-details a .text-bottom {
+  transform: translateY(100%);
+  opacity: 0;
+}
+.contact-details a:hover .text-top {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.contact-details a:hover .text-bottom {
+  transform: translateY(0);
+  opacity: 1;
 }
 .contact-details .contact-footer {
   display: flex;
@@ -790,6 +886,18 @@ legend {
   line-height: 1;
   overflow: hidden;
   padding: 155px 0 0;
+}
+
+.sectionSwiper {
+  width: 100%;
+  height: 100%;
+}
+.sectionSwiper .swiper-slide {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 /* 공통 스타일 */
@@ -829,17 +937,47 @@ a {
 }
 .gnb > li {
   position: relative;
+  overflow: hidden;
 }
-.gnb > li a {
+.gnb > li .text-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 140px;
+  height: 40px;
+  overflow: hidden;
+}
+.gnb > li .text-top a,
+.gnb > li .text-bottom a {
   width: 140px;
   line-height: 40px;
   font-size: 1.6rem;
   font-weight: 500;
   text-align: end;
   color: #fff;
-  transition: 0.3s ease;
 }
-.gnb > li a:hover {
-  font-weight: 700;
-  scale: 1.2;
+.gnb > li .text-top,
+.gnb > li .text-bottom {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+.gnb > li .text-top {
+  transform: translateY(0);
+  opacity: 1;
+}
+.gnb > li .text-bottom {
+  transform: translateY(100%);
+  opacity: 0;
+}
+.gnb > li:hover .text-top {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.gnb > li:hover .text-bottom {
+  transform: translateY(0);
+  opacity: 1;
 }/*# sourceMappingURL=styles.css.map */
