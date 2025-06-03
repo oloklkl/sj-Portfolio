@@ -1,29 +1,61 @@
-window.addEventListener("scroll", () => {
-  const introTitle = document.querySelector(".contact-title");
-  const introSection = document.querySelector(".contact-intro");
+const intro = document.querySelector(".contact-intro");
+const wrapper = document.querySelector(".contact-img-wrapper");
+let isAnimating = false;
+let currentlyVisible = false;
 
-  const introTop = introSection.getBoundingClientRect().top;
-  const introBottom = introSection.getBoundingClientRect().bottom;
-  const triggerPoint = window.innerHeight * 0.5;
+function openAnimation() {
+  if (isAnimating || currentlyVisible) return;
 
-  // 뷰포트 중간을 지나면 실행
-  if (introTop < triggerPoint && introBottom > 0) {
-    if (!introSection.classList.contains("animating")) {
-      // 애니메이션 중복 방지
-      introSection.classList.add("animating");
+  isAnimating = true;
+  currentlyVisible = true;
 
-      // 초기화 (이미 숨겨져 있으면 다시 보이게)
-      introTitle.classList.remove("split");
-      introSection.classList.remove("hide");
+  // 초기 상태 복구
+  wrapper.classList.remove("split");
+  intro.classList.remove("hide");
+
+  // 리플로우 강제
+  void wrapper.offsetWidth;
+
+  // 1.5초 기다린 후 찢어지는 애니메이션 시작
+  setTimeout(() => {
+    wrapper.classList.add("split");
+
+    setTimeout(() => {
+      intro.classList.add("hide"); // 사라짐 효과
 
       setTimeout(() => {
-        introTitle.classList.add("split");
+        isAnimating = false;
+      }, 500); // fade out 시간과 맞춤
+    }, 2000); // split 애니메이션 시간과 맞춤
+  }, 1500); // 1.5초 딜레이
+}
 
-        setTimeout(() => {
-          introSection.classList.add("hide");
-          introSection.classList.remove("animating"); // 애니메이션 끝나면 플래그 해제
-        }, 1000); // split 애니메이션 시간
-      }, 2000); // 트리거 후 대기 시간
-    }
+function resetToClosed() {
+  if (isAnimating) return; // 애니메이션 중에는 리셋하지 않음
+
+  currentlyVisible = false;
+  intro.classList.add("hide");
+  wrapper.classList.remove("split");
+}
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+        if (!currentlyVisible) {
+          openAnimation();
+        }
+      } else {
+        if (currentlyVisible && !isAnimating) {
+          resetToClosed();
+        }
+      }
+    });
+  },
+  {
+    threshold: 0.5, // 단일 threshold 값 사용
+    rootMargin: "0px",
   }
-});
+);
+
+observer.observe(intro);
