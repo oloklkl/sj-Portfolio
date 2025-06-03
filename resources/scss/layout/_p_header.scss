@@ -44,20 +44,55 @@ a {
 
   > li {
     position: relative;
+    overflow: hidden;
 
-    a {
+    .text-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 140px;
+      height: 40px;
+      overflow: hidden;
+    }
+
+    .text-top a,
+    .text-bottom a {
       width: 140px;
       line-height: 40px;
       font-size: 1.6rem;
       font-weight: 500;
       text-align: end;
       color: $white;
-      transition: $transition-ease;
+    }
 
-      &:hover {
-        font-weight: $font-bold;
-        scale: 1.2;
-      }
+    .text-top,
+    .text-bottom {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+
+    .text-top {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .text-bottom {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    &:hover .text-top {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+
+    &:hover .text-bottom {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 }
