@@ -364,22 +364,22 @@
 
 // bokjak 섹션
 .bokjak {
-  background-image: url("../../images/component/common/bokjak.png");
+  background-image: url("../../images/component/project/bokjak.png");
 }
 
 // popmart 섹션
 .popmart {
-  background-image: url("../../images/component/common/popmart.png");
+  background-image: url("../../images/component/project/popmart.png");
 }
 
 // gucci 섹션
 .gucci {
-  background-image: url("../../images/component/common/gucci.png");
+  background-image: url("../../images/component/project/gucci.png");
 }
 
 // hanatour 섹션
 .hanatour {
-  background-image: url("../../images/component/common/hanatour.png");
+  background-image: url("../../images/component/project/hanatour.png");
 }
 
 // contact-intro 섹션
@@ -387,72 +387,50 @@
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $primary;
   overflow: hidden;
   z-index: 50;
+  transition: opacity 0.5s ease;
+  opacity: 1;
 
-  .inner {
+  .contact-intro.hide {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  .contact-img-wrapper {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    transition: transform 2s ease;
   }
 
-  .contact-title {
-    font-size: 25rem;
-    font-weight: bold;
+  .contact-img,
+  .me-img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    transform: translateY(0);
+    transition: transform 2s ease;
+  }
 
-    span {
-      display: block;
-      transition: transform 1s ease, opacity 1s ease;
+  .contact-img-wrapper.split {
+    .contact-img {
+      transform: translateY(-100%);
+      transition: transform 2s ease;
     }
 
-    .top {
-      transform-origin: bottom;
-    }
-
-    .bottom {
-      display: flex;
-      justify-content: center;
-      transform-origin: top;
-    }
-
-    &.split {
-      .top {
-        transform: translateY(-100%);
-        opacity: 0;
-      }
-
-      .bottom {
-        transform: translateY(100%);
-        opacity: 0;
-      }
+    .me-img {
+      transform: translateY(100%);
+      transition: transform 2s ease;
     }
   }
-}
-
-.contact-intro.hide {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.8s ease;
-}
-
-.contact-overlay {
-  position: fixed;
-  top: 50%; // 🚀 중앙에서 시작
-  left: 0;
-  transform: translateY(-50%);
-  width: 100vw;
-  height: 0vh; // 🚀 처음엔 높이가 없음
-  background-color: $gray-90;
-  transition: height 0.8s ease-out;
-  z-index: 10;
-}
-
-.contact-intro:hover .contact-overlay {
-  opacity: 1; // 해당 섹션에서만 보이도록 조정
 }
 
 // contact-details 섹션

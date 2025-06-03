@@ -353,12 +353,12 @@ legend {
 
 .contact-section-wrapper {
   position: relative;
+  background-color: #111111;
 }
 
 .contact-intro {
   width: 100%;
   height: 100vh;
-  background-color: #fbf0da;
 }
 
 .contact-details {
@@ -720,82 +720,62 @@ legend {
 }
 
 .bokjak {
-  background-image: url("../../images/component/common/bokjak.png");
+  background-image: url("../../images/component/project/bokjak.png");
 }
 
 .popmart {
-  background-image: url("../../images/component/common/popmart.png");
+  background-image: url("../../images/component/project/popmart.png");
 }
 
 .gucci {
-  background-image: url("../../images/component/common/gucci.png");
+  background-image: url("../../images/component/project/gucci.png");
 }
 
 .hanatour {
-  background-image: url("../../images/component/common/hanatour.png");
+  background-image: url("../../images/component/project/hanatour.png");
 }
 
 .contact-intro {
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fbf0da;
   overflow: hidden;
   z-index: 50;
+  transition: opacity 0.5s ease;
+  opacity: 1;
 }
-.contact-intro .inner {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-.contact-intro .contact-title {
-  font-size: 25rem;
-  font-weight: bold;
-}
-.contact-intro .contact-title span {
-  display: block;
-  transition: transform 1s ease, opacity 1s ease;
-}
-.contact-intro .contact-title .top {
-  transform-origin: bottom;
-}
-.contact-intro .contact-title .bottom {
-  display: flex;
-  justify-content: center;
-  transform-origin: top;
-}
-.contact-intro .contact-title.split .top {
-  transform: translateY(-100%);
-  opacity: 0;
-}
-.contact-intro .contact-title.split .bottom {
-  transform: translateY(100%);
-  opacity: 0;
-}
-
-.contact-intro.hide {
+.contact-intro .contact-intro.hide {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.8s ease;
+  transition: opacity 0.5s ease;
 }
-
-.contact-overlay {
-  position: fixed;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 100vw;
-  height: 0vh;
-  background-color: #111111;
-  transition: height 0.8s ease-out;
-  z-index: 10;
+.contact-intro .contact-img-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  transition: transform 2s ease;
 }
-
-.contact-intro:hover .contact-overlay {
-  opacity: 1;
+.contact-intro .contact-img,
+.contact-intro .me-img {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  transform: translateY(0);
+  transition: transform 2s ease;
+}
+.contact-intro .contact-img-wrapper.split .contact-img {
+  transform: translateY(-100%);
+  transition: transform 2s ease;
+}
+.contact-intro .contact-img-wrapper.split .me-img {
+  transform: translateY(100%);
+  transition: transform 2s ease;
 }
 
 .contact-details {
