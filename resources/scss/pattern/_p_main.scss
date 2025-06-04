@@ -20,8 +20,53 @@
   }
 }
 
+// intro-wrapper
+.intro-wrapper {
+  position: relative;
+  overflow: hidden;
+
+  &.open {
+    .left-door {
+      transform: translateX(-100%) !important;
+      background-color: $primary;
+    }
+    .right-door {
+      transform: translateX(100%) !important;
+      background-color: $primary;
+    }
+    .intro {
+      opacity: 1;
+    }
+  }
+
+  .door {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50vw;
+    background: #111;
+    z-index: 1500;
+    transition: transform 1.5s ease;
+
+    &.left-door {
+      left: 0;
+      transform-origin: left center;
+      transform: translateX(0);
+    }
+
+    &.right-door {
+      right: 0;
+      transform-origin: right center;
+      transform: translateX(0);
+    }
+  }
+}
+
 // intro 섹션
 .intro {
+  opacity: 0;
+  transition: opacity 1s ease 1.5s;
+
   .intro-content {
     display: flex;
     justify-content: space-between;
@@ -362,24 +407,40 @@
   }
 }
 
-// bokjak 섹션
-.bokjak {
-  background-image: url("../../images/component/project/bokjak.png");
-}
+// project-sections
+.project-sections {
+  position: relative;
 
-// popmart 섹션
-.popmart {
-  background-image: url("../../images/component/project/popmart.png");
-}
+  // bokjak 섹션
+  .bokjak {
+    background-image: url("../../images/component/project/bokjak.png");
+    z-index: 1;
+  }
 
-// gucci 섹션
-.gucci {
-  background-image: url("../../images/component/project/gucci.png");
-}
+  // popmart 섹션
+  .popmart {
+    background-image: url("../../images/component/project/popmart.png");
+    z-index: 2;
+  }
 
-// hanatour 섹션
-.hanatour {
-  background-image: url("../../images/component/project/hanatour.png");
+  // gucci 섹션
+  .gucci {
+    background-image: url("../../images/component/project/gucci.png");
+    z-index: 3;
+  }
+
+  // hanatour 섹션
+  .hanatour {
+    background-image: url("../../images/component/project/hanatour.png");
+    z-index: 4;
+  }
+  .bokjak,
+  .popmart,
+  .gucci,
+  .hanatour {
+    position: sticky;
+    top: 0;
+  }
 }
 
 // contact-intro 섹션
