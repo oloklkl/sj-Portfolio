@@ -157,7 +157,7 @@
       font-family: $font-family-title;
       font-weight: 500;
       color: $primary;
-      font-size: 15rem;
+      font-size: 13rem;
       line-height: 270px;
     }
   }
@@ -179,7 +179,7 @@
       margin-top: 50px;
 
       h3 {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
         color: $primary;
         margin-bottom: 20px;
       }
@@ -194,12 +194,12 @@
           align-items: center;
 
           .info-label {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: $gray-60;
             margin-right: 30px;
           }
           .info-value {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: $gray-10;
           }
         }
@@ -228,7 +228,7 @@
   .about-motion-title h2 {
     display: inline-block;
     font-family: $font-family-title;
-    font-size: 10rem;
+    font-size: 9rem;
     font-weight: bold;
     line-height: 1.6;
   }
@@ -461,12 +461,6 @@
   transition: opacity 0.5s ease;
   opacity: 1;
 
-  .contact-intro.hide {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-  }
-
   .contact-img-wrapper {
     display: flex;
     flex-direction: column;
@@ -474,6 +468,10 @@
     height: 100vh;
     overflow: hidden;
     transition: transform 2s ease;
+  }
+
+  .contact-img-wrapper.opened {
+    pointer-events: none;
   }
 
   .contact-img,
@@ -496,6 +494,12 @@
       transition: transform 2s ease;
     }
   }
+}
+
+.contact-intro.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
 // contact-details 섹션
@@ -530,11 +534,11 @@
         margin-bottom: 10px;
 
         .info-label {
-          font-size: 3rem;
+          font-size: 2.6rem;
           color: $gray-60;
         }
         .info-value {
-          font-size: 3.2rem;
+          font-size: 2.8rem;
         }
       }
     }
@@ -601,6 +605,6 @@
     flex-wrap: wrap;
     line-height: 1;
     overflow: hidden;
-    padding: 155px 0 0;
+    padding: 200px 0 0;
   }
 }
