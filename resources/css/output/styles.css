@@ -458,10 +458,14 @@ legend {
 .intro .content-wrap h3 {
   font-size: 6rem;
   color: #fff;
+  opacity: 0;
+  transform: translateY(30px);
 }
 .intro .content-wrap p {
   font-size: 1.6rem;
   color: #fbf0da;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .hero h2 {
@@ -711,7 +715,7 @@ legend {
 .gucci .project-description .project-title,
 .hanatour .project-description .project-title {
   font-family: "PPFragment-GlareRegular", sans-serif;
-  letter-spacing: -10px;
+  letter-spacing: -5px;
   font-size: 10rem;
   font-weight: 500;
 }

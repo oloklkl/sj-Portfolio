@@ -95,10 +95,14 @@
     h3 {
       font-size: 6rem;
       color: $white;
+      opacity: 0;
+      transform: translateY(30px);
     }
     p {
       font-size: 1.6rem;
       color: $primary;
+      opacity: 0;
+      transform: translateY(20px);
     }
   }
 }
@@ -366,7 +370,7 @@
     }
     .project-title {
       font-family: $font-family-title;
-      letter-spacing: -10px;
+      letter-spacing: -5px;
       font-size: 10rem;
       font-weight: 500;
     }
