@@ -552,10 +552,35 @@ legend {
   color: #f5f5f5;
 }
 .about .about-content .about-info .skills-info .skills-list {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
-.about .about-content .about-info span img {
+.about .about-content .about-info .skills-info .skills-list,
+.about .about-content .about-info .skills-info .skills-list2 {
+  display: flex;
+}
+.about .about-content .about-info .skills-info img {
+  display: block;
   margin-right: 10px;
+}
+.about .about-content .about-info .skills-info .skill-icon {
+  position: relative;
+  cursor: pointer;
+}
+.about .about-content .about-info .skills-info .skill-icon:hover .icon-color {
+  opacity: 1;
+}
+.about .about-content .about-info .skills-info .skill-icon:hover .icon-dark {
+  opacity: 0;
+}
+.about .about-content .about-info .skills-info .icon-color,
+.about .about-content .about-info .skills-info .icon-dark {
+  transition: opacity 0.3s ease;
+}
+.about .about-content .about-info .skills-info .icon-color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
 }
 
 .about-motion {
@@ -682,13 +707,23 @@ legend {
   stroke-dashoffset: 44px;
 }
 
+.gucci {
+  background-size: cover;
+  background-position: center;
+}
+
+.bokjak,
+.popmart,
+.hanatour {
+  background-size: 80%;
+  background-position: center;
+}
+
 .bokjak,
 .popmart,
 .gucci,
 .hanatour {
   color: #ffffff;
-  background-size: cover;
-  background-position: center;
   padding: 100px 0;
 }
 .bokjak .inner,
@@ -775,9 +810,29 @@ legend {
   background-image: url("../../images/component/project/bokjak.png");
   z-index: 1;
 }
+.project-sections .bokjak::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, transparent 15%, transparent 85%, rgba(0, 0, 0, 0.8) 100%);
+  pointer-events: none;
+}
 .project-sections .popmart {
   background-image: url("../../images/component/project/popmart.png");
   z-index: 2;
+}
+.project-sections .popmart::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, transparent 15%);
+  pointer-events: none;
 }
 .project-sections .gucci {
   background-image: url("../../images/component/project/gucci.png");

@@ -206,13 +206,41 @@
       }
       .skills-info {
         .skills-list {
-          margin-bottom: 5px;
+          margin-bottom: 10px;
         }
-      }
+        .skills-list,
+        .skills-list2 {
+          display: flex;
+        }
 
-      span {
         img {
+          display: block;
           margin-right: 10px;
+        }
+
+        .skill-icon {
+          position: relative;
+          cursor: pointer;
+
+          &:hover .icon-color {
+            opacity: 1;
+          }
+
+          &:hover .icon-dark {
+            opacity: 0;
+          }
+        }
+
+        .icon-color,
+        .icon-dark {
+          transition: opacity 0.3s ease;
+        }
+
+        .icon-color {
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0;
         }
       }
     }
@@ -348,14 +376,24 @@
   }
 }
 
+.gucci {
+  background-size: cover;
+  background-position: center;
+}
+
+.bokjak,
+.popmart,
+.hanatour {
+  background-size: 80%;
+  background-position: center;
+}
+
 // bokjak, popmart, gucci, hanatour 섹션 <공통스타일>
 .bokjak,
 .popmart,
 .gucci,
 .hanatour {
   color: $gray-0;
-  background-size: cover;
-  background-position: center;
   padding: 100px 0;
 
   .inner {
@@ -419,12 +457,34 @@
   .bokjak {
     background-image: url("../../images/component/project/bokjak.png");
     z-index: 1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, transparent 15%, transparent 85%, rgba(0, 0, 0, 0.8) 100%);
+      pointer-events: none;
+    }
   }
 
   // popmart 섹션
   .popmart {
     background-image: url("../../images/component/project/popmart.png");
     z-index: 2;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, transparent 15%);
+      pointer-events: none;
+    }
   }
 
   // gucci 섹션
