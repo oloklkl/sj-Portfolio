@@ -109,6 +109,11 @@
 
 // hero 섹션
 .hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+
   h2 {
     font-size: 20rem;
     font-family: $font-family-title;
@@ -132,7 +137,17 @@
       width: 600px;
       height: 140px;
       background: $gray-90;
-      transition: all 0.5s ease;
+      transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      z-index: 60;
+    }
+    .hero-line.expanded {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 
@@ -260,13 +275,26 @@
     font-weight: bold;
     line-height: 1.6;
   }
+
+  .letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(-200px) rotateY(0deg);
+    transform-origin: center center;
+    will-change: transform, opacity;
+    transition: none;
+  }
 }
 
 // skills 섹션
 .skills {
+  overflow: hidden;
+
   .skills-container {
     display: flex;
     justify-content: space-between;
+    padding: 50px 0;
+    height: 100vh;
   }
 
   .section-title {
@@ -274,30 +302,52 @@
     justify-content: center;
     align-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    height: 100vh;
     font-family: $font-family-title;
     font-weight: 500;
     color: $gray-90;
     font-size: 12rem;
     line-height: 270px;
   }
+
+  .fade {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    pointer-events: none;
+    z-index: 10;
+
+    &.fade-top {
+      top: 0;
+      background: linear-gradient(to bottom, $primary 0%, rgba($primary, 0.8) 60%, rgba($primary, 0) 100%);
+    }
+
+    &.fade-bottom {
+      bottom: 0;
+      background: linear-gradient(to top, $primary 0%, rgba($primary, 0.8) 60%, rgba($primary, 0) 100%);
+    }
+  }
+
   .skills-list {
+    position: relative;
     display: flex;
-    gap: 40px;
+    overflow: hidden;
+    align-items: flex-start;
+    gap: 20px 40px;
 
     .skill-item,
     .skill-item2,
     .skill-item3 {
-      padding: 80px 0;
+      display: flex;
+      flex-direction: column;
 
       .skill-chart {
         position: relative;
         background-color: rgba(17, 17, 17, 0.3);
-        width: 300px;
-        height: 300px;
-        margin-bottom: 35px;
-        border-radius: 20px;
+        width: 280px;
+        height: 270px;
+        margin-bottom: 30px;
+        border-radius: 10px;
         color: $gray-0;
 
         svg {
@@ -321,6 +371,7 @@
           top: 50%;
           left: 50%;
           transform: translate(-50%, 230%);
+
           h2 {
             font-size: 2.5rem;
           }
@@ -333,44 +384,58 @@
           @include posXY;
           font-size: 3rem;
           font-weight: bold;
+          text-align: center;
         }
       }
     }
 
-    .skill-item {
-      .skill-chart {
-        circle:nth-child(2) {
-          stroke: $white;
-          stroke-dasharray: 440px;
-          stroke-dashoffset: 440px;
-        }
-        circle:nth-child(2) {
-          stroke-dashoffset: calc(440px - (440px * 90) / 100);
-        }
-      }
-    }
-    .skill-item2 {
-      .skill-chart {
-        circle:nth-child(2) {
-          stroke: $white;
-          stroke-dasharray: 440px;
-          stroke-dashoffset: 440px;
-        }
-        circle:nth-child(2) {
-          stroke-dashoffset: calc(440px - (440px * 90) / 100);
-        }
-      }
-    }
+    .skill-item,
+    .skill-item2,
     .skill-item3 {
       .skill-chart {
         circle:nth-child(2) {
-          stroke: $white;
+          stroke: $gray-20;
           stroke-dasharray: 440px;
           stroke-dashoffset: 440px;
         }
-        circle:nth-child(2) {
+
+        &.percent-90 circle:nth-child(2) {
           stroke-dashoffset: calc(440px - (440px * 90) / 100);
         }
+        &.percent-70 circle:nth-child(2) {
+          stroke-dashoffset: calc(440px - (440px * 70) / 100);
+        }
+        &.percent-65 circle:nth-child(2) {
+          stroke-dashoffset: calc(440px - (440px * 65) / 100);
+        }
+        &.percent-75 circle:nth-child(2) {
+          stroke-dashoffset: calc(440px - (440px * 75) / 100);
+        }
+      }
+    }
+    .skill-item,
+    .skill-item3 {
+      animation: skill-item 40s linear infinite;
+    }
+    .skill-item2 {
+      animation: skill-item2 40s linear infinite;
+    }
+
+    @keyframes skill-item {
+      from {
+        transform: translateY(0%);
+      }
+      to {
+        transform: translateY(-50%);
+      }
+    }
+
+    @keyframes skill-item2 {
+      from {
+        transform: translateY(-50%);
+      }
+      to {
+        transform: translateY(0%);
       }
     }
   }

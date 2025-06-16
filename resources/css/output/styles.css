@@ -319,6 +319,11 @@ legend {
   box-sizing: border-box;
 }
 
+.ha-wrapper {
+  position: relative;
+  background-color: #111111;
+}
+
 .hero {
   width: 100%;
   height: 100vh;
@@ -346,7 +351,6 @@ legend {
   width: 100%;
   height: 100vh;
   background-color: #fbf0da;
-  overflow: hidden;
 }
 
 .bokjak,
@@ -468,6 +472,12 @@ legend {
   transform: translateY(20px);
 }
 
+.hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+}
 .hero h2 {
   font-size: 20rem;
   font-family: "PPFragment-GlareRegular", sans-serif;
@@ -489,7 +499,17 @@ legend {
   width: 600px;
   height: 140px;
   background: #111111;
-  transition: all 0.5s ease;
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 60;
+}
+.hero .hero-subtitle .hero-line.expanded {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .hero .hero-content {
   display: flex;
@@ -595,42 +615,73 @@ legend {
   font-weight: bold;
   line-height: 1.6;
 }
+.about-motion .letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(-200px) rotateY(0deg);
+  transform-origin: center center;
+  will-change: transform, opacity;
+  transition: none;
+}
 
+.skills {
+  overflow: hidden;
+}
 .skills .skills-container {
   display: flex;
   justify-content: space-between;
+  padding: 50px 0;
+  height: 100vh;
 }
 .skills .section-title {
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  height: 100vh;
   font-family: "PPFragment-GlareRegular", sans-serif;
   font-weight: 500;
   color: #111111;
   font-size: 12rem;
   line-height: 270px;
 }
+.skills .fade {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  pointer-events: none;
+  z-index: 10;
+}
+.skills .fade.fade-top {
+  top: 0;
+  background: linear-gradient(to bottom, #fbf0da 0%, rgba(251, 240, 218, 0.8) 60%, rgba(251, 240, 218, 0) 100%);
+}
+.skills .fade.fade-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, #fbf0da 0%, rgba(251, 240, 218, 0.8) 60%, rgba(251, 240, 218, 0) 100%);
+}
 .skills .skills-list {
+  position: relative;
   display: flex;
-  gap: 40px;
+  overflow: hidden;
+  align-items: flex-start;
+  gap: 20px 40px;
 }
 .skills .skills-list .skill-item,
 .skills .skills-list .skill-item2,
 .skills .skills-list .skill-item3 {
-  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
 }
 .skills .skills-list .skill-item .skill-chart,
 .skills .skills-list .skill-item2 .skill-chart,
 .skills .skills-list .skill-item3 .skill-chart {
   position: relative;
   background-color: rgba(17, 17, 17, 0.3);
-  width: 300px;
-  height: 300px;
-  margin-bottom: 35px;
-  border-radius: 20px;
+  width: 280px;
+  height: 270px;
+  margin-bottom: 30px;
+  border-radius: 10px;
   color: #ffffff;
 }
 .skills .skills-list .skill-item .skill-chart svg,
@@ -681,30 +732,57 @@ legend {
   transform: translate(-50%, -50%);
   font-size: 3rem;
   font-weight: bold;
+  text-align: center;
 }
-.skills .skills-list .skill-item .skill-chart circle:nth-child(2) {
-  stroke: #fff;
-  stroke-dasharray: 440px;
-  stroke-dashoffset: 440px;
-}
-.skills .skills-list .skill-item .skill-chart circle:nth-child(2) {
-  stroke-dashoffset: 44px;
-}
-.skills .skills-list .skill-item2 .skill-chart circle:nth-child(2) {
-  stroke: #fff;
-  stroke-dasharray: 440px;
-  stroke-dashoffset: 440px;
-}
-.skills .skills-list .skill-item2 .skill-chart circle:nth-child(2) {
-  stroke-dashoffset: 44px;
-}
+.skills .skills-list .skill-item .skill-chart circle:nth-child(2),
+.skills .skills-list .skill-item2 .skill-chart circle:nth-child(2),
 .skills .skills-list .skill-item3 .skill-chart circle:nth-child(2) {
-  stroke: #fff;
+  stroke: #e0e0e0;
   stroke-dasharray: 440px;
   stroke-dashoffset: 440px;
 }
-.skills .skills-list .skill-item3 .skill-chart circle:nth-child(2) {
+.skills .skills-list .skill-item .skill-chart.percent-90 circle:nth-child(2),
+.skills .skills-list .skill-item2 .skill-chart.percent-90 circle:nth-child(2),
+.skills .skills-list .skill-item3 .skill-chart.percent-90 circle:nth-child(2) {
   stroke-dashoffset: 44px;
+}
+.skills .skills-list .skill-item .skill-chart.percent-70 circle:nth-child(2),
+.skills .skills-list .skill-item2 .skill-chart.percent-70 circle:nth-child(2),
+.skills .skills-list .skill-item3 .skill-chart.percent-70 circle:nth-child(2) {
+  stroke-dashoffset: 132px;
+}
+.skills .skills-list .skill-item .skill-chart.percent-65 circle:nth-child(2),
+.skills .skills-list .skill-item2 .skill-chart.percent-65 circle:nth-child(2),
+.skills .skills-list .skill-item3 .skill-chart.percent-65 circle:nth-child(2) {
+  stroke-dashoffset: 154px;
+}
+.skills .skills-list .skill-item .skill-chart.percent-75 circle:nth-child(2),
+.skills .skills-list .skill-item2 .skill-chart.percent-75 circle:nth-child(2),
+.skills .skills-list .skill-item3 .skill-chart.percent-75 circle:nth-child(2) {
+  stroke-dashoffset: 110px;
+}
+.skills .skills-list .skill-item,
+.skills .skills-list .skill-item3 {
+  animation: skill-item 40s linear infinite;
+}
+.skills .skills-list .skill-item2 {
+  animation: skill-item2 40s linear infinite;
+}
+@keyframes skill-item {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+@keyframes skill-item2 {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0%);
+  }
 }
 
 .gucci {
