@@ -16,7 +16,7 @@ function openAnimation() {
   // 리플로우 강제
   void wrapper.offsetWidth;
 
-  // 1.5초 기다린 후 찢어지는 애니메이션 시작
+  // 1초 기다린 후 찢어지는 애니메이션 시작
   setTimeout(() => {
     wrapper.classList.add("split");
 
@@ -27,7 +27,7 @@ function openAnimation() {
         isAnimating = false;
       }, 500); // fade out 시간과 맞춤
     }, 2000); // split 애니메이션 시간과 맞춤
-  }, 1500); // 1.5초 딜레이
+  }, 1000); // 1초 딜레이
 }
 
 function resetToClosed() {
