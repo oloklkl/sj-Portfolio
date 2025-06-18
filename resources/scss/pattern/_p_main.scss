@@ -141,14 +141,6 @@
       position: relative;
       z-index: 60;
     }
-    .hero-line.expanded {
-      width: 100vw;
-      height: 100vh;
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
   }
 
   .hero-content {
@@ -262,30 +254,6 @@
   }
 }
 
-//about-motion 섹션
-.about-motion {
-  background: #fff;
-  padding: 10rem 2rem;
-  text-align: center;
-
-  .about-motion-title h2 {
-    display: inline-block;
-    font-family: $font-family-title;
-    font-size: 9rem;
-    font-weight: bold;
-    line-height: 1.6;
-  }
-
-  .letter {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(-200px) rotateY(0deg);
-    transform-origin: center center;
-    will-change: transform, opacity;
-    transition: none;
-  }
-}
-
 // skills 섹션
 .skills {
   overflow: hidden;
@@ -345,7 +313,7 @@
         position: relative;
         background-color: rgba(17, 17, 17, 0.3);
         width: 280px;
-        height: 270px;
+        height: 260px;
         margin-bottom: 30px;
         border-radius: 10px;
         color: $gray-0;
@@ -441,6 +409,38 @@
   }
 }
 
+//about-motion 섹션
+.about-motion {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #fff;
+  padding: 10rem 2rem;
+  text-align: center;
+  perspective: 1000px;
+
+  .about-motion-title {
+    transform: translateY(-35rem); // 원하는 만큼 조절
+  }
+
+  .about-motion-title h2 {
+    display: inline-block;
+    font-family: $font-family-title;
+    font-size: 9rem;
+    font-weight: bold;
+    line-height: 1.6;
+  }
+
+  .letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateZ(-1500px) scale(0.1) rotateY(0deg);
+    transform-origin: center center;
+    will-change: transform, opacity;
+    transform-style: preserve-3d;
+  }
+}
+
 .gucci {
   background-size: cover;
   background-position: center;
@@ -521,7 +521,7 @@
   // bokjak 섹션
   .bokjak {
     background-image: url("../../images/component/project/bokjak.png");
-    z-index: 1;
+    z-index: 2;
 
     &::before {
       content: "";
@@ -538,7 +538,7 @@
   // popmart 섹션
   .popmart {
     background-image: url("../../images/component/project/popmart.png");
-    z-index: 2;
+    z-index: 3;
 
     &::before {
       content: "";
@@ -555,13 +555,13 @@
   // gucci 섹션
   .gucci {
     background-image: url("../../images/component/project/gucci.png");
-    z-index: 3;
+    z-index: 4;
   }
 
   // hanatour 섹션
   .hanatour {
     background-image: url("../../images/component/project/hanatour.png");
-    z-index: 4;
+    z-index: 5;
   }
   .bokjak,
   .popmart,
