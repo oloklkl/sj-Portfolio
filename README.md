@@ -45,6 +45,25 @@
 
 > 👉 [바로가기 (GitHub Pages)](https://oloklkl.github.io/sj-Portfolio/pages/)
 
+
+## 💌 Open Graph
+
+![portfolio-kakao](https://github.com/user-attachments/assets/1ca45bb9-ea46-434b-bd2c-ddc256c9a760)
+
+
+- meta tags를 통해 Facebook, twitter, linkedin, discord, kakao talk 등 링크를 전달 했을 때 링크에 대한 정보를 볼 수 있도록 구현
+  
+```html
+<!-- index.html -->
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="조성주 • sj-Portfolio" />
+    <meta property="og:description" content="퍼블리셔 및 프론트엔드 개발 지망생 조성주의 이력서형 포트폴리오 웹사이트입니다." />
+    <meta property="og:image" content="https://oloklkl.github.io/sj-Portfolio/resources/images/component/common/meta.png" />
+    <meta property="og:url" content="https://oloklkl.github.io/sj-Portfolio/pages/" />
+```
+---
+
 ## 📁 프로젝트 구조
 ```
 sj-Portfolio/
