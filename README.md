@@ -29,21 +29,21 @@ GSAP, SCSS, React-scroll 등의 기술을 활용해 **트렌디하고 역동적�
 - **디테일을 강조한 마이크로 인터랙션**
 
 ## 📁 프로젝트 구조
-
-sj-portfolio/
-├── public/
-├── src/
-│ ├── assets/
-│ ├── components/
-│ ├── pages/
-│ ├── styles/
-│ └── App.jsx
-├── index.html
-└── package.json
-
-yaml
-복사
-편집
+```
+sj-Portfolio/
+├── .vscode
+├── pages
+│ ├── layout/
+│ ├── ├── header.html
+│ └── index.html
+├── resources/
+│ ├── css/
+│ ├── fonts/
+│ ├── images/
+│ ├── js/
+│ └── scss/
+└── README.md
+```
 
 ## 📌 목적
 
@@ -57,8 +57,8 @@ React 프로젝트, 브랜드 리디자인, 인터랙션 설계까지 **다양�
 
 - 이름: 조성주
 - 희망 포지션: 웹 퍼블리셔 / 프론트엔드 개발자
-- GitHub: [github.com/sj](https://github.com/your-id)
-- Email: your@email.com
+- GitHub: [@oloklkl](https://github.com/oloklkl)
+- Email: 76seongju@gmail.com
 
 ---
 
