@@ -1,26 +1,50 @@
-const introWrapper = document.querySelector(".intro-wrapper");
-if (!introWrapper) {
-  console.log("intro-wrapper가 없어서 애니메이션 실행 안함");
-} else {
+function initGnb() {
+  const wrappers = document.querySelectorAll(".gnb .text-wrapper");
+
+  wrappers.forEach((wrapper) => {
+    const topLink = wrapper.querySelector(".text-top a");
+    if (topLink) {
+      const temp = document.createElement("span");
+      temp.style.position = "absolute";
+      temp.style.visibility = "hidden";
+      temp.style.whiteSpace = "nowrap";
+      temp.style.fontSize = getComputedStyle(topLink).fontSize;
+      temp.style.fontWeight = getComputedStyle(topLink).fontWeight;
+      temp.style.fontFamily = getComputedStyle(topLink).fontFamily;
+      temp.innerText = topLink.innerText;
+
+      document.body.appendChild(temp);
+      const width = temp.offsetWidth;
+      document.body.removeChild(temp);
+
+      wrapper.style.width = width + "px";
+    }
+  });
+}
+
+window.addEventListener("load", () => {
+  initGnb();
+
+  const introWrapper = document.querySelector(".intro-wrapper");
+  if (!introWrapper) {
+    console.log("intro-wrapper가 없어서 애니메이션 실행 안함");
+    return;
+  }
+
   function runAnimation() {
-    const headerMenuItems = document.querySelectorAll(".inner .header-wrapper .gnb li .text-top a");
-    // 텍스트 요소들 선택
+    const headerMenuItems = document.querySelectorAll(".gnb li .text-top a");
     const titleH2 = document.querySelector(".title-wrap h2");
     const contentH3 = document.querySelector(".content-wrap h3");
     const contentPs = document.querySelectorAll(".content-wrap p");
 
-    // 헤더 메뉴 초기 세팅
     if (headerMenuItems.length > 0) {
       gsap.set(headerMenuItems, { opacity: 0, x: -20 });
     }
 
-    // H2 초기 세팅 (SCSS에 없는 속성만)
     gsap.set(titleH2, { opacity: 0, scale: 0.8 });
 
-    // 문 열기
     introWrapper.classList.add("open");
 
-    // 헤더 메뉴 애니메이션
     if (headerMenuItems.length > 0) {
       gsap.to(headerMenuItems, {
         duration: 0.6,
@@ -32,9 +56,7 @@ if (!introWrapper) {
       });
     }
 
-    // 텍스트 애니메이션 (문 열린 후 시작)
     setTimeout(() => {
-      // H2 애니메이션
       gsap.to(titleH2, {
         duration: 1.2,
         opacity: 1,
@@ -42,7 +64,6 @@ if (!introWrapper) {
         ease: "back.out(1.4)",
       });
 
-      // H3 애니메이션 (SCSS에서 설정한 초기값 사용)
       gsap.to(contentH3, {
         duration: 0.8,
         opacity: 1,
@@ -51,7 +72,6 @@ if (!introWrapper) {
         delay: 0.4,
       });
 
-      // P 태그들 순차 애니메이션 (SCSS에서 설정한 초기값 사용)
       gsap.to(contentPs, {
         duration: 0.6,
         opacity: 1,
@@ -63,8 +83,5 @@ if (!introWrapper) {
     }, 1600);
   }
 
-  // 페이지 로드시 실행
-  window.addEventListener("DOMContentLoaded", () => {
-    setTimeout(runAnimation, 500);
-  });
-}
+  setTimeout(runAnimation, 500);
+});
