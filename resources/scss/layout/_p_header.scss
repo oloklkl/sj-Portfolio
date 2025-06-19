@@ -45,23 +45,25 @@ a {
   > li {
     position: relative;
     overflow: hidden;
+    margin-left: 5.5rem;
 
     .text-wrapper {
-      position: relative;
-      display: inline-block;
-      width: 140px;
+      display: inline-flex;
       height: 40px;
+      width: fit-content;
       overflow: hidden;
+      position: relative;
     }
 
     .text-top a,
     .text-bottom a {
-      width: 140px;
+      display: inline-block;
       line-height: 40px;
       font-size: 1.6rem;
       font-weight: 500;
       text-align: end;
       color: $white;
+      white-space: nowrap;
     }
 
     .text-top,

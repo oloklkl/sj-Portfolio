@@ -11,7 +11,7 @@
     padding: 0 $p-tablet;
   }
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1540px) {
     max-width: 1200px;
   }
 
@@ -69,14 +69,13 @@
 
   .intro-content {
     display: flex;
-    justify-content: space-between;
-    transform: translateY(150%);
+    transform: translateY(130%);
   }
 
   .title-wrap {
     h2 {
       color: $primary;
-      font-size: 33rem;
+      font-size: 37rem;
       font-family: $font-family-title;
       font-weight: 500;
       line-height: 1;
@@ -90,7 +89,7 @@
   }
 
   .content-wrap {
-    transform: translateY(-20px);
+    transform: translateY(-20px) translateX(70px);
 
     h3 {
       font-size: 6rem;
@@ -118,23 +117,22 @@
     font-size: 20rem;
     font-family: $font-family-title;
     font-weight: 500;
-    line-height: 1.1;
+    line-height: 1.2;
     letter-spacing: -10px;
     transform: translateY(20px);
   }
 
   .hero-title {
     display: flex;
-    justify-content: center;
   }
 
   .hero-subtitle {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 
     .hero-line {
-      width: 600px;
+      width: 700px;
       height: 140px;
       background: $gray-90;
       transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -152,7 +150,7 @@
       transform: translateX(30px);
     }
     .hero-description {
-      transform: translateX(-50px) translateY(-40px);
+      transform: translateX(-80px) translateY(-40px);
     }
   }
 }
@@ -174,8 +172,8 @@
     justify-content: space-around;
 
     .profile-image {
-      width: 400px;
-      height: 600px;
+      width: auto;
+      height: 560px;
     }
 
     .about-info {
@@ -257,6 +255,9 @@
 // skills 섹션
 .skills {
   overflow: hidden;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 
   .skills-container {
     display: flex;
@@ -273,7 +274,7 @@
     font-family: $font-family-title;
     font-weight: 500;
     color: $gray-90;
-    font-size: 12rem;
+    font-size: 13rem;
     line-height: 270px;
   }
 
@@ -311,7 +312,7 @@
 
       .skill-chart {
         position: relative;
-        background-color: rgba(17, 17, 17, 0.3);
+        background-color: $gray-90;
         width: 280px;
         height: 260px;
         margin-bottom: 30px;
@@ -328,7 +329,7 @@
             height: 100%;
             fill: none;
             stroke-width: 10;
-            stroke: rgba(255, 255, 255, 0.05);
+            stroke: rgba(255, 255, 255, 0.1);
             transform: translate(5px, 5px);
             stroke-linecap: round;
           }
@@ -362,7 +363,7 @@
     .skill-item3 {
       .skill-chart {
         circle:nth-child(2) {
-          stroke: $gray-20;
+          stroke: yellow;
           stroke-dasharray: 440px;
           stroke-dashoffset: 440px;
         }
@@ -411,24 +412,21 @@
 
 //about-motion 섹션
 .about-motion {
-  position: sticky;
-  top: 0;
-  z-index: 1;
   background: #fff;
   padding: 10rem 2rem;
   text-align: center;
   perspective: 1000px;
 
-  .about-motion-title {
-    transform: translateY(-35rem); // 원하는 만큼 조절
-  }
+  // .about-motion-title {
+  //   transform: translateY(-20rem); // 원하는 만큼 조절
+  // }
 
   .about-motion-title h2 {
     display: inline-block;
     font-family: $font-family-title;
     font-size: 9rem;
     font-weight: bold;
-    line-height: 1.6;
+    line-height: 1.8;
   }
 
   .letter {
@@ -449,7 +447,7 @@
 .bokjak,
 .popmart,
 .hanatour {
-  background-size: 80%;
+  background-size: 90%;
   background-position: center;
 }
 
@@ -470,6 +468,7 @@
 
     .project-type {
       font-size: 2.3rem;
+      font-weight: 400;
     }
     .project-title {
       font-family: $font-family-title;
@@ -493,14 +492,35 @@
     }
 
     .view-project-button {
+      display: inline-block;
       color: $gray-0;
       margin-bottom: 20px;
+
+      &:hover {
+        color: yellow;
+
+        span {
+          border: 2px solid yellow;
+        }
+      }
 
       span {
         border: 2px solid $gray-0;
         padding: 5px 20px;
         border-radius: 40px;
         font-size: 3rem;
+      }
+    }
+
+    .renewal {
+      color: red;
+
+      &:hover {
+        color: yellow;
+
+        span {
+          border: 2px solid yellow;
+        }
       }
     }
   }
@@ -639,13 +659,15 @@
     padding: 100px 0 50px;
 
     .contact-direct {
-      .contact-email {
-        font-size: 6rem;
-        margin-bottom: 30px;
+      .contact-thanks {
+        margin-top: 30px;
+        font-size: 4.5rem;
+        font-weight: 400;
+        line-height: 0.8;
       }
-      .contact-phone {
-        color: $gray-40;
-        font-size: 3rem;
+      .contact-message {
+        font-size: 4.5rem;
+        font-weight: 400;
       }
     }
     .contact-info {
