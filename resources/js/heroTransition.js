@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     heroLine.style.display = "block";
     heroLine.style.position = "relative";
-    heroLine.style.width = "600px"; // 초기 크기
+    heroLine.style.width = "700px"; // 초기 크기
     heroLine.style.height = "140px"; // 초기 크기
     heroLine.style.left = "auto";
     heroLine.style.top = "auto";
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
     heroSection.style.opacity = "1";
     heroSection.style.pointerEvents = "auto";
     heroLine.style.position = "relative";
-    heroLine.style.width = "600px";
+    heroLine.style.width = "700px";
     heroLine.style.height = "140px";
     heroLine.style.left = "auto";
     heroLine.style.top = "auto";
