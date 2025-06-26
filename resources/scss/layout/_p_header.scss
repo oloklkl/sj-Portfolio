@@ -26,6 +26,18 @@ a {
           font-weight: bold;
           color: $white;
           letter-spacing: 2px;
+
+          @include lg-only {
+            font-size: 1.8rem;
+          }
+
+          @include md-only {
+            font-size: 1.6rem;
+          }
+
+          @include sm-only {
+            font-size: 1.6rem;
+          }
         }
       }
     }
@@ -47,6 +59,10 @@ a {
     overflow: hidden;
     margin-left: 5.5rem;
 
+    @include sm-only {
+      margin-left: 1.8rem;
+    }
+
     .text-wrapper {
       display: inline-flex;
       height: 40px;
@@ -64,6 +80,19 @@ a {
       text-align: end;
       color: $white;
       white-space: nowrap;
+
+      @include lg-only {
+        font-size: 1.4rem;
+      }
+
+      @include md-only {
+        font-size: 1.4rem;
+      }
+
+      @include sm-only {
+        font-size: 1.2rem;
+        line-height: 45px;
+      }
     }
 
     .text-top,

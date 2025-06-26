@@ -7,16 +7,16 @@
   margin: 0 auto;
   padding: 0 $p-mobile;
 
-  @include tablet {
+  @include md-only {
     padding: 0 $p-tablet;
   }
 
-  @media (max-width: 1540px) {
-    max-width: 1200px;
+  @include lg-only {
+    padding: 0 $p-laptop;
   }
 
-  @media (max-width: 1024px) {
-    max-width: 100%;
+  @include xl-up {
+    padding: 0 $p-desktop;
   }
 }
 
@@ -69,39 +69,82 @@
 
   .intro-content {
     display: flex;
-    transform: translateY(130%);
+    // transform: translateY(130%);
+    padding: 40rem 0 0;
+
+    @include lg-only {
+      // transform: translateY(200%);
+      padding: 45rem 0 0;
+    }
+
+    @include md-only {
+      padding: 47rem 0 0;
+    }
+
+    @include sm-only {
+      padding: 60rem 0 0;
+    }
   }
 
   .title-wrap {
     h2 {
       color: $primary;
-      font-size: 37rem;
+      font-size: 35rem;
       font-family: $font-family-title;
       font-weight: 500;
       line-height: 1;
       overflow: hidden;
       letter-spacing: -5px;
 
-      img {
-        width: 100%;
+      @include lg-only {
+        font-size: 28rem;
+      }
+
+      @include md-only {
+        font-size: 23rem;
+      }
+
+      @include sm-only {
+        font-size: 10rem;
       }
     }
   }
 
   .content-wrap {
-    transform: translateY(-20px) translateX(70px);
+    transform: translateY(-20px) translateX(60px);
+
+    @include sm-only {
+      transform: translateY(-20px) translateX(20px);
+    }
 
     h3 {
       font-size: 6rem;
       color: $white;
       opacity: 0;
       transform: translateY(30px);
+
+      @include lg-only {
+        font-size: 4.6rem;
+      }
+
+      @include md-only {
+        font-size: 4rem;
+      }
+
+      @include sm-only {
+        font-size: 3rem;
+      }
     }
+
     p {
       font-size: 1.6rem;
       color: $primary;
       opacity: 0;
       transform: translateY(20px);
+
+      @include sm-only {
+        font-size: 1.3rem;
+      }
     }
   }
 }
@@ -120,6 +163,20 @@
     line-height: 1.2;
     letter-spacing: -10px;
     transform: translateY(20px);
+
+    @include lg-only {
+      font-size: 15rem;
+      line-height: 1.5;
+    }
+
+    @include md-only {
+      font-size: 10rem;
+    }
+
+    @include sm-only {
+      font-size: 6rem;
+      line-height: 1.8;
+    }
   }
 
   .hero-title {
@@ -138,6 +195,14 @@
       transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       z-index: 60;
+
+      @include md-only {
+        height: 100px;
+      }
+
+      @include sm-only {
+        height: 50px;
+      }
     }
   }
 
@@ -146,11 +211,38 @@
     justify-content: space-evenly;
     align-items: center;
 
+    @include lg-only {
+      justify-content: space-around;
+    }
+
+    @include md-only {
+      justify-content: space-between;
+    }
+
+    @include sm-only {
+      justify-content: center;
+    }
+
     .hero-highlight {
       transform: translateX(30px);
     }
+
     .hero-description {
-      transform: translateX(-80px) translateY(-40px);
+      @include xl-only {
+        transform: translateX(-80px) translateY(-40px);
+      }
+
+      @include lg-only {
+        font-size: 1.5rem;
+      }
+
+      @include md-only {
+        font-size: 1.3rem;
+      }
+
+      @include sm-only {
+        display: none;
+      }
     }
   }
 }
@@ -164,6 +256,18 @@
       color: $primary;
       font-size: 13rem;
       line-height: 270px;
+
+      @include lg-only {
+        font-size: 11rem;
+      }
+
+      @include md-only {
+        font-size: 9rem;
+      }
+
+      @include sm-only {
+        font-size: 5rem;
+      }
     }
   }
 
@@ -276,6 +380,18 @@
     color: $gray-90;
     font-size: 13rem;
     line-height: 270px;
+
+    @include lg-only {
+      font-size: 11rem;
+    }
+
+    @include md-only {
+      font-size: 9rem;
+    }
+
+    @include sm-only {
+      font-size: 5rem;
+    }
   }
 
   .fade {
@@ -417,16 +533,19 @@
   text-align: center;
   perspective: 1000px;
 
-  // .about-motion-title {
-  //   transform: translateY(-20rem); // 원하는 만큼 조절
-  // }
-
   .about-motion-title h2 {
     display: inline-block;
     font-family: $font-family-title;
     font-size: 9rem;
     font-weight: bold;
     line-height: 1.8;
+
+    @include lg-only {
+      font-size: 7rem;
+    }
+    @include sm-only {
+      font-size: 5rem;
+    }
   }
 
   .letter {
@@ -521,6 +640,10 @@
         span {
           border: 2px solid yellow;
         }
+      }
+      p {
+        display: inline;
+        color: $gray-0;
       }
     }
   }
@@ -694,7 +817,7 @@
   a {
     position: relative;
     display: flex;
-    color: $gray-0;
+    color: yellow;
     font-size: 3rem;
 
     .text-wrapper {

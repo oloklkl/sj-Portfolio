@@ -54,10 +54,13 @@ $font-weight-base: $font-normal !default;
 $line-height-none: 1 !default;
 $line-height-base: 1.5 !default;
 
-//padding style
-$grid: 1740px !default;
-$p-tablet: 30px !default;
-$p-mobile: 20px !default;
+// grid & padding
+$grid: 1820px !default;
+
+$p-desktop: 60px !default; // 1400px 이상
+$p-laptop: 40px !default; // 1000px ~ 1399px
+$p-tablet: 30px !default; // 600px ~ 999px
+$p-mobile: 20px !default; // ~599px
 
 $hdH: 80px;
 $hdH-xl: 80px;
@@ -65,6 +68,7 @@ $hdH-xl: 80px;
 $ftH: 70px;
 
 //breakpoints
-$breakpoint-sm: 600px !default;
-$breakpoint-md: 1024px !default;
-$breakpoint-lg: 1920px !default;
+$breakpoint-sm: 600px !default; // 모바일
+$breakpoint-md: 1000px !default; // 태블릿
+$breakpoint-lg: 1400px !default; // 노트북/중간 데스크탑
+$breakpoint-xl: 1920px !default; // 대형 화면 (4K, 와이드 등)

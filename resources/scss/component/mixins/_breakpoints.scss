@@ -1,40 +1,55 @@
-// mobile
-@mixin mobile {
+// 600px 미만 (모바일)
+@mixin sm-only {
   @media (max-width: ($breakpoint-sm - 1px)) {
     @content;
   }
 }
-// tablet
-@mixin mobileMore {
-  @media (min-width: $breakpoint-sm) {
-    @content;
-  }
-}
 
-// tablet
-@mixin tablet {
+// 600px 이상 ~ 999px 이하 (태블릿)
+@mixin md-only {
   @media (min-width: $breakpoint-sm) and (max-width: ($breakpoint-md - 1px)) {
     @content;
   }
 }
 
-// tablet
-@mixin tabletLess {
-  @media (max-width: ($breakpoint-md - 1px)) {
+// 1000px 이상 ~ 1399px 이하 (노트북/중간 데스크탑)
+@mixin lg-only {
+  @media (min-width: $breakpoint-md) and (max-width: ($breakpoint-lg - 1px)) {
     @content;
   }
 }
 
-// desktop
-@mixin tabletMore {
+// 1400px 이상 ~ 1919px 이하 (보통 데스크탑)
+@mixin xl-only {
+  @media (min-width: $breakpoint-lg) and (max-width: ($breakpoint-xl - 1px)) {
+    @content;
+  }
+}
+
+// 1920px 이상 (대형 화면)
+@mixin xl-up {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+// 1400px 이상 (데스크탑 이상)
+@mixin lg-up {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+// 1000px 이상 (태블릿 이상)
+@mixin md-up {
   @media (min-width: $breakpoint-md) {
     @content;
   }
 }
 
-// desktop big
-@mixin desktop {
-  @media (min-width: $breakpoint-lg) {
+// 600px 이상 (모바일 이상)
+@mixin sm-up {
+  @media (min-width: $breakpoint-sm) {
     @content;
   }
 }
