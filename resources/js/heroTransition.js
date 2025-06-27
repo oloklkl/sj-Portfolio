@@ -6,17 +6,29 @@ document.addEventListener("DOMContentLoaded", function () {
   let isTransitioning = false;
   let hasTransitioned = false;
 
+  // 디바이스 너비에 따라 초기 height 설정 (SCSS 기준)
+  function getInitialHeroLineHeight() {
+    const width = window.innerWidth;
+
+    if (width < 600) return 50;
+    if (width < 1000) return 80;
+    if (width < 1400) return 100;
+    return 140;
+  }
+
+  function getInitialHeroLineWidth() {
+    return 700; // 고정값 그대로 유지
+  }
+
   // 스크롤 이벤트 리스너
   window.addEventListener("scroll", function () {
     const scrollY = window.scrollY;
     const triggerPoint = window.innerHeight * 0.9;
 
-    // 아래로 스크롤할 때 hero 안에서만 작동
     if (!hasTransitioned && scrollY > triggerPoint && scrollY < window.innerHeight && !isTransitioning) {
       startTransition();
     }
 
-    // 위로 올라오면 초기화
     if (hasTransitioned && scrollY < triggerPoint / 2 && !isTransitioning) {
       resetTransition();
     }
@@ -25,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function startTransition() {
     isTransitioning = true;
 
-    // 스크롤 막기
     document.body.style.overflow = "hidden";
 
     const rect = heroLine.getBoundingClientRect();
@@ -37,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const originalWidth = rect.width;
     const originalHeight = rect.height;
 
-    // placeholder 삽입
     const placeholder = document.createElement("div");
     placeholder.style.width = originalWidth + "px";
     placeholder.style.height = originalHeight + "px";
@@ -45,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
     placeholder.id = "heroLinePlaceholder";
     heroLine.parentNode.insertBefore(placeholder, heroLine.nextSibling);
 
-    // 고정 위치로 이동
     heroLine.style.position = "fixed";
     heroLine.style.left = rect.left + "px";
     heroLine.style.top = rect.top + "px";
@@ -68,9 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
       aboutSection.style.position = "relative";
       aboutSection.style.zIndex = "10";
 
-      // 스크롤 다시 허용
       document.body.style.overflow = "auto";
-
       hasTransitioned = true;
       isTransitioning = false;
 
@@ -83,17 +90,14 @@ document.addEventListener("DOMContentLoaded", function () {
   function resetTransition() {
     isTransitioning = true;
 
-    // 스크롤 다시 잠깐 허용
     document.body.style.overflow = "auto";
-
-    // hero 복원
     heroSection.style.opacity = "1";
     heroSection.style.pointerEvents = "auto";
 
     heroLine.style.display = "block";
     heroLine.style.position = "relative";
-    heroLine.style.width = "700px"; // 초기 크기
-    heroLine.style.height = "140px"; // 초기 크기
+    heroLine.style.width = getInitialHeroLineWidth() + "px";
+    heroLine.style.height = getInitialHeroLineHeight() + "px";
     heroLine.style.left = "auto";
     heroLine.style.top = "auto";
     heroLine.style.transform = "none";
@@ -111,14 +115,13 @@ document.addEventListener("DOMContentLoaded", function () {
     isTransitioning = false;
   }
 
-  // 새로고침 또는 페이지 떠날 때도 초기화
   window.addEventListener("beforeunload", function () {
     document.body.style.overflow = "auto";
     heroSection.style.opacity = "1";
     heroSection.style.pointerEvents = "auto";
     heroLine.style.position = "relative";
-    heroLine.style.width = "700px";
-    heroLine.style.height = "140px";
+    heroLine.style.width = getInitialHeroLineWidth() + "px";
+    heroLine.style.height = getInitialHeroLineHeight() + "px";
     heroLine.style.left = "auto";
     heroLine.style.top = "auto";
     heroLine.style.transform = "none";
