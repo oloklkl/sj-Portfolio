@@ -3,6 +3,34 @@ const wrapper = document.querySelector(".contact-img-wrapper");
 let isAnimating = false;
 let currentlyVisible = false;
 
+// 📌 화면 너비에 따라 이미지 src 바꾸는 함수
+function updateContactImages() {
+  const contactImg = document.querySelector(".contact-img");
+  const meImg = document.querySelector(".me-img");
+  const width = window.innerWidth;
+
+  if (width <= 499) {
+    contactImg.src = "../resources/images/component/contact/499-up.png";
+    meImg.src = "../resources/images/component/contact/499-down.png";
+  } else if (width <= 599) {
+    contactImg.src = "../resources/images/component/contact/599-up.png";
+    meImg.src = "../resources/images/component/contact/599-down.png";
+  } else if (width <= 799) {
+    contactImg.src = "../resources/images/component/contact/799-up.png";
+    meImg.src = "../resources/images/component/contact/799-down.png";
+  } else if (width <= 999) {
+    contactImg.src = "../resources/images/component/contact/999-up.png";
+    meImg.src = "../resources/images/component/contact/999-down.png";
+  } else if (width <= 1399) {
+    contactImg.src = "../resources/images/component/contact/1399-up.png";
+    meImg.src = "../resources/images/component/contact/1399-down.png";
+  } else {
+    contactImg.src = "../resources/images/component/contact/contact.png";
+    meImg.src = "../resources/images/component/contact/me.png";
+  }
+}
+
+// 📌 섹션 등장 시 애니메이션 실행
 function openAnimation() {
   if (isAnimating || currentlyVisible) return;
 
@@ -25,19 +53,21 @@ function openAnimation() {
 
       setTimeout(() => {
         isAnimating = false;
-      }, 500); // fade out 시간과 맞춤
-    }, 2000); // split 애니메이션 시간과 맞춤
-  }, 1000); // 1초 딜레이
+      }, 500); // fade out 시간
+    }, 2000); // split 애니메이션 시간
+  }, 1000); // 딜레이
 }
 
+// 📌 화면에서 벗어날 때 원상태로 복귀
 function resetToClosed() {
-  if (isAnimating) return; // 애니메이션 중에는 리셋하지 않음
+  if (isAnimating) return;
 
   currentlyVisible = false;
   intro.classList.add("hide");
   wrapper.classList.remove("split");
 }
 
+// 📌 섹션 보일 때 자동 실행 감지
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -53,9 +83,13 @@ const observer = new IntersectionObserver(
     });
   },
   {
-    threshold: 0.5, // 단일 threshold 값 사용
+    threshold: 0.5,
     rootMargin: "0px",
   }
 );
 
 observer.observe(intro);
+
+// 📌 로딩 & 리사이즈 시 이미지 경로 반응형 적용
+window.addEventListener("load", updateContactImages);
+window.addEventListener("resize", updateContactImages);
