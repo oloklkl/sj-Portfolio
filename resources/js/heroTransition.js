@@ -5,11 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let isTransitioning = false;
   let hasTransitioned = false;
+  let transitionStarted = false;
 
-  // 디바이스 너비에 따라 초기 height 설정 (SCSS 기준)
   function getInitialHeroLineHeight() {
     const width = window.innerWidth;
-
     if (width < 600) return 50;
     if (width < 1000) return 80;
     if (width < 1400) return 100;
@@ -17,26 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function getInitialHeroLineWidth() {
-    return 700; // 고정값 그대로 유지
+    return 700;
   }
-
-  // 스크롤 이벤트 리스너
-  window.addEventListener("scroll", function () {
-    const scrollY = window.scrollY;
-    const triggerPoint = window.innerHeight * 0.9;
-
-    if (!hasTransitioned && scrollY > triggerPoint && scrollY < window.innerHeight && !isTransitioning) {
-      startTransition();
-    }
-
-    if (hasTransitioned && scrollY < triggerPoint / 2 && !isTransitioning) {
-      resetTransition();
-    }
-  });
 
   function startTransition() {
     isTransitioning = true;
-
+    transitionStarted = true;
     document.body.style.overflow = "hidden";
 
     const rect = heroLine.getBoundingClientRect();
@@ -107,14 +92,55 @@ document.addEventListener("DOMContentLoaded", function () {
     aboutSection.style.position = "static";
 
     const existingPlaceholder = document.getElementById("heroLinePlaceholder");
-    if (existingPlaceholder) {
-      existingPlaceholder.remove();
-    }
+    if (existingPlaceholder) existingPlaceholder.remove();
 
     hasTransitioned = false;
     isTransitioning = false;
+    transitionStarted = false;
   }
 
+  // ✅ about 섹션이 화면에 딱 맞게 보일 때
+  function isAboutFullyInView() {
+    const rect = aboutSection.getBoundingClientRect();
+    const isTopAligned = Math.abs(rect.top) < 1;
+    const isBottomAligned = Math.abs(rect.bottom - window.innerHeight) < 1;
+    return isTopAligned && isBottomAligned;
+  }
+
+  // ✅ about 섹션이 조금 지나서 멈췄거나 20px 정도 위에 잘린 상태도 허용
+  function isAboutNearlyInView() {
+    const rect = aboutSection.getBoundingClientRect();
+    // top이 0보다 작거나, 20px 이내로 화면 상단에 잘린 상태면 true
+    const topInRange = rect.top <= 0 && rect.top >= -20;
+    // bottom이 화면 아래에서 -20px ~ 100px 사이로 잘린 경우도 허용
+    const bottomInRange = rect.bottom >= window.innerHeight - 80 && rect.bottom <= window.innerHeight + 20;
+
+    return topInRange || bottomInRange;
+  }
+
+  // ✅ wheel 이벤트 - 두 조건 중 하나라도 만족하면 transition 실행
+  window.addEventListener(
+    "wheel",
+    function (e) {
+      if (isTransitioning || hasTransitioned || transitionStarted) return;
+
+      if ((isAboutFullyInView() || isAboutNearlyInView()) && e.deltaY > 0) {
+        e.preventDefault();
+        startTransition();
+      }
+    },
+    { passive: false }
+  );
+
+  // ✅ 스크롤 올릴 때 초기화
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    if (hasTransitioned && scrollY < window.innerHeight / 2 && !isTransitioning) {
+      resetTransition();
+    }
+  });
+
+  // ✅ 새로고침 시 초기 상태 복원
   window.addEventListener("beforeunload", function () {
     document.body.style.overflow = "auto";
     heroSection.style.opacity = "1";
@@ -129,12 +155,12 @@ document.addEventListener("DOMContentLoaded", function () {
     heroLine.style.transition = "none";
     heroLine.style.zIndex = "auto";
     aboutSection.style.position = "static";
-    hasTransitioned = false;
-    isTransitioning = false;
 
     const existingPlaceholder = document.getElementById("heroLinePlaceholder");
-    if (existingPlaceholder) {
-      existingPlaceholder.remove();
-    }
+    if (existingPlaceholder) existingPlaceholder.remove();
+
+    hasTransitioned = false;
+    isTransitioning = false;
+    transitionStarted = false;
   });
 });
