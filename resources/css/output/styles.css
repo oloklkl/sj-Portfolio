@@ -341,7 +341,6 @@ legend {
 }
 @media (max-width: 499px) {
   .about {
-    height: auto;
     padding: 0 0 30px;
   }
 }
@@ -474,9 +473,29 @@ legend {
   overflow: hidden;
   letter-spacing: -5px;
 }
+@media (max-width: 1650px) {
+  .intro .title-wrap h2 {
+    font-size: 32rem;
+  }
+}
 @media (min-width: 1000px) and (max-width: 1399px) {
   .intro .title-wrap h2 {
     font-size: 28rem;
+  }
+}
+@media (max-width: 1299px) {
+  .intro .title-wrap h2 {
+    font-size: 26rem;
+  }
+}
+@media (max-width: 1199px) {
+  .intro .title-wrap h2 {
+    font-size: 22rem;
+  }
+}
+@media (max-width: 1099px) {
+  .intro .title-wrap h2 {
+    font-size: 20rem;
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
@@ -484,13 +503,33 @@ legend {
     font-size: 18rem;
   }
 }
+@media (max-width: 899px) {
+  .intro .title-wrap h2 {
+    font-size: 14rem;
+  }
+}
+@media (max-width: 799px) {
+  .intro .title-wrap h2 {
+    font-size: 12rem;
+  }
+}
 @media (max-width: 599px) {
   .intro .title-wrap h2 {
     font-size: 10rem;
   }
 }
+@media (max-width: 500px) {
+  .intro .title-wrap h2 {
+    font-size: 8rem;
+  }
+}
 .intro .content-wrap {
   transform: translateY(-20px) translateX(60px);
+}
+@media (max-width: 1650px) {
+  .intro .content-wrap {
+    transform: translateY(-20px) translateX(30px);
+  }
 }
 @media (max-width: 599px) {
   .intro .content-wrap {
@@ -515,7 +554,7 @@ legend {
 }
 @media (max-width: 599px) {
   .intro .content-wrap h3 {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
 }
 .intro .content-wrap p {
@@ -558,6 +597,24 @@ legend {
 @media (min-width: 600px) and (max-width: 999px) {
   .hero h2 {
     font-size: 10rem;
+  }
+}
+@media (max-width: 799px) {
+  .hero h2 {
+    font-size: 8rem;
+    line-height: 1.5;
+  }
+}
+@media (max-width: 670px) {
+  .hero h2 {
+    font-size: 7rem;
+    line-height: 1.5;
+  }
+}
+@media (max-width: 640px) {
+  .hero h2 {
+    font-size: 6.2rem;
+    line-height: 1.8;
   }
 }
 @media (max-width: 599px) {
@@ -615,11 +672,22 @@ legend {
 }
 @media (max-width: 599px) {
   .hero .hero-content {
-    justify-content: center;
+    justify-content: space-between;
   }
 }
 .hero .hero-content .hero-highlight {
   transform: translateX(30px);
+}
+@media (max-width: 599px) {
+  .hero .hero-content .hero-highlight {
+    transform: translateX(0);
+    margin-right: 10px;
+  }
+}
+@media (min-width: 1920px) {
+  .hero .hero-content .hero-description {
+    transform: translateX(-80px) translateY(-40px);
+  }
 }
 @media (min-width: 1400px) and (max-width: 1919px) {
   .hero .hero-content .hero-description {
@@ -629,6 +697,7 @@ legend {
 @media (min-width: 1000px) and (max-width: 1399px) {
   .hero .hero-content .hero-description {
     font-size: 1.5rem;
+    transform: translateY(-40px);
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
@@ -638,7 +707,7 @@ legend {
 }
 @media (max-width: 599px) {
   .hero .hero-content .hero-description {
-    display: none;
+    font-size: 1.1rem;
   }
 }
 
@@ -652,6 +721,11 @@ legend {
 @media (min-width: 1000px) and (max-width: 1399px) {
   .about .about-title h2 {
     font-size: 10rem;
+  }
+}
+@media (max-width: 1099px) {
+  .about .about-title h2 {
+    font-size: 9.2rem;
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
@@ -668,7 +742,7 @@ legend {
 }
 @media (max-width: 499px) {
   .about .about-title h2 {
-    line-height: 120px;
+    line-height: 100px;
   }
 }
 .about .about-content {
@@ -704,9 +778,10 @@ legend {
 }
 @media (max-width: 499px) {
   .about .about-content .profile-image {
-    width: 180px;
+    width: 130px;
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    align-self: center;
   }
 }
 .about .about-content .about-info {
@@ -735,6 +810,11 @@ legend {
     flex-direction: column;
     margin-top: 0;
     gap: 20px;
+  }
+}
+@media (max-width: 499px) {
+  .about .about-content .about-info {
+    gap: 10px;
   }
 }
 .about .about-content .about-info h3 {
@@ -887,6 +967,12 @@ legend {
 @media (min-width: 1000px) and (max-width: 1399px) {
   .skills .section-title {
     font-size: 10rem;
+  }
+}
+@media (max-width: 1099px) {
+  .skills .section-title {
+    font-size: 9.2rem;
+    margin-right: 30px;
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
@@ -1201,6 +1287,21 @@ legend {
   font-weight: bold;
   line-height: 1.8;
 }
+@media (max-width: 1599px) {
+  .about-motion .about-motion-title h2 {
+    font-size: 8rem;
+  }
+}
+@media (max-width: 1499px) {
+  .about-motion .about-motion-title h2 {
+    font-size: 7.6rem;
+  }
+}
+@media (max-width: 1399px) {
+  .about-motion .about-motion-title h2 {
+    font-size: 7.2rem;
+  }
+}
 @media (min-width: 1000px) and (max-width: 1399px) {
   .about-motion .about-motion-title h2 {
     font-size: 7rem;
@@ -1208,12 +1309,27 @@ legend {
 }
 @media (min-width: 600px) and (max-width: 999px) {
   .about-motion .about-motion-title h2 {
-    font-size: 6rem;
+    font-size: 6.6rem;
+  }
+}
+@media (max-width: 799px) {
+  .about-motion .about-motion-title h2 {
+    font-size: 5.8rem;
   }
 }
 @media (max-width: 599px) {
   .about-motion .about-motion-title h2 {
     font-size: 5rem;
+  }
+}
+@media (max-width: 599px) {
+  .about-motion .about-motion-title h2 {
+    font-size: 4.6rem;
+  }
+}
+@media (max-width: 499px) {
+  .about-motion .about-motion-title h2 {
+    font-size: 4rem;
   }
 }
 .about-motion .letter {
@@ -1420,18 +1536,21 @@ legend {
   display: inline-block;
   color: #ffffff;
   margin-bottom: 20px;
+  transition: all 0.3s ease;
 }
 .bokjak .project-description .view-project-button:hover,
 .popmart .project-description .view-project-button:hover,
 .gucci .project-description .view-project-button:hover,
 .hanatour .project-description .view-project-button:hover {
   color: yellow;
+  transform: scale(1.08);
 }
 .bokjak .project-description .view-project-button:hover span,
 .popmart .project-description .view-project-button:hover span,
 .gucci .project-description .view-project-button:hover span,
 .hanatour .project-description .view-project-button:hover span {
   border: 2px solid yellow;
+  background-color: rgba(255, 255, 0, 0.1);
 }
 .bokjak .project-description .view-project-button span,
 .popmart .project-description .view-project-button span,
@@ -1441,6 +1560,7 @@ legend {
   padding: 5px 20px;
   border-radius: 40px;
   font-size: 3rem;
+  transition: all 0.3s ease;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
   .bokjak .project-description .view-project-button span,
@@ -1471,6 +1591,7 @@ legend {
 .gucci .project-description .renewal,
 .hanatour .project-description .renewal {
   color: red;
+  transition: color 0.3s ease;
 }
 .bokjak .project-description .renewal:hover,
 .popmart .project-description .renewal:hover,
@@ -1815,14 +1936,44 @@ legend {
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
   .contact-details .contact-footer {
-    font-size: 28rem;
+    font-size: 26rem;
     padding: 300px 0 0;
+  }
+}
+@media (max-width: 1299px) {
+  .contact-details .contact-footer {
+    font-size: 24rem;
+  }
+}
+@media (max-width: 1199px) {
+  .contact-details .contact-footer {
+    font-size: 22rem;
+  }
+}
+@media (max-width: 1099px) {
+  .contact-details .contact-footer {
+    font-size: 20rem;
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
   .contact-details .contact-footer {
-    font-size: 20rem;
+    font-size: 18rem;
     padding: 300px 0 0;
+  }
+}
+@media (max-width: 899px) {
+  .contact-details .contact-footer {
+    font-size: 16rem;
+  }
+}
+@media (max-width: 799px) {
+  .contact-details .contact-footer {
+    font-size: 14rem;
+  }
+}
+@media (max-width: 699px) {
+  .contact-details .contact-footer {
+    font-size: 13rem;
   }
 }
 @media (max-width: 599px) {
@@ -1838,8 +1989,14 @@ legend {
 }
 @media (max-width: 499px) {
   .contact-details .contact-footer {
-    font-size: 8rem;
-    padding: 250px 0 0;
+    font-size: 9.6rem;
+    padding: 350px 0 0;
+  }
+}
+@media (max-width: 440px) {
+  .contact-details .contact-footer {
+    font-size: 9rem;
+    padding: 350px 0 0;
   }
 }
 
