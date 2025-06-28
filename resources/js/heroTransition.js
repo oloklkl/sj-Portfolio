@@ -2,10 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const heroSection = document.querySelector(".hero");
   const heroLine = document.getElementById("heroLine");
   const aboutSection = document.querySelector(".about");
-
   let isTransitioning = false;
   let hasTransitioned = false;
-  let transitionStarted = false;
+  let canTriggerTransition = false;
+  let isHeaderClick = false; // header 클릭 여부 플래그
+
+  if (!heroSection || !heroLine || !aboutSection) return;
 
   function getInitialHeroLineHeight() {
     const width = window.innerWidth;
@@ -20,14 +22,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function startTransition() {
+    if (isTransitioning || hasTransitioned) return;
+
     isTransitioning = true;
-    transitionStarted = true;
     document.body.style.overflow = "hidden";
 
     const rect = heroLine.getBoundingClientRect();
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-
     const originalLeft = rect.left + scrollLeft;
     const originalTop = rect.top + scrollTop;
     const originalWidth = rect.width;
@@ -54,31 +56,32 @@ document.addEventListener("DOMContentLoaded", function () {
       heroLine.style.left = "0";
       heroLine.style.top = "0";
       heroLine.style.transform = "none";
-    }, 100);
+    }, 50);
 
     setTimeout(() => {
       heroSection.style.opacity = "0";
       heroSection.style.pointerEvents = "none";
       aboutSection.style.position = "relative";
       aboutSection.style.zIndex = "10";
-
       document.body.style.overflow = "auto";
+
       hasTransitioned = true;
       isTransitioning = false;
 
       setTimeout(() => {
         heroLine.style.display = "none";
-      }, 1000);
+      }, 800);
     }, 1600);
   }
 
   function resetTransition() {
-    isTransitioning = true;
+    if (isTransitioning) return;
 
+    isTransitioning = true;
     document.body.style.overflow = "auto";
+
     heroSection.style.opacity = "1";
     heroSection.style.pointerEvents = "auto";
-
     heroLine.style.display = "block";
     heroLine.style.position = "relative";
     heroLine.style.width = getInitialHeroLineWidth() + "px";
@@ -88,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
     heroLine.style.transform = "none";
     heroLine.style.zIndex = "auto";
     heroLine.style.transition = "none";
-
     aboutSection.style.position = "static";
 
     const existingPlaceholder = document.getElementById("heroLinePlaceholder");
@@ -96,52 +98,102 @@ document.addEventListener("DOMContentLoaded", function () {
 
     hasTransitioned = false;
     isTransitioning = false;
-    transitionStarted = false;
+    canTriggerTransition = false;
+    isHeaderClick = false;
+
+    // 다음 프레임에서 transition 가능하도록 설정
+    setTimeout(() => {
+      isTransitioning = false;
+    }, 100);
   }
 
-  // ✅ about 섹션이 화면에 딱 맞게 보일 때
-  function isAboutFullyInView() {
-    const rect = aboutSection.getBoundingClientRect();
-    const isTopAligned = Math.abs(rect.top) < 1;
-    const isBottomAligned = Math.abs(rect.bottom - window.innerHeight) < 1;
-    return isTopAligned && isBottomAligned;
+  // ✅ hero 섹션을 관찰하고 threshold를 낮춤
+  const heroObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        // hero가 화면에 거의 다 보이면 트랜지션 준비 (header 클릭이 아닐 때만)
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.8 && !hasTransitioned && !isHeaderClick) {
+          canTriggerTransition = true;
+        } else if (!entry.isIntersecting || entry.intersectionRatio < 0.5) {
+          canTriggerTransition = false;
+        }
+      });
+    },
+    {
+      root: null,
+      threshold: [0.5, 0.8, 1.0], // 여러 임계점으로 더 정확한 감지
+    }
+  );
+
+  heroObserver.observe(heroSection);
+
+  function handleHeaderHeroClick() {
+    if (!isTransitioning && !hasTransitioned) {
+      isHeaderClick = true;
+
+      // 즉시 스크롤 막기
+      document.body.style.overflow = "hidden";
+
+      // hero 섹션으로 부드럽게 이동
+      heroSection.scrollIntoView({ behavior: "smooth" });
+
+      // 이동 완료 후 트랜지션 준비
+      setTimeout(() => {
+        canTriggerTransition = true;
+      }, 1000);
+    }
   }
 
-  // ✅ about 섹션이 조금 지나서 멈췄거나 20px 정도 위에 잘린 상태도 허용
-  function isAboutNearlyInView() {
-    const rect = aboutSection.getBoundingClientRect();
-    // top이 0보다 작거나, 20px 이내로 화면 상단에 잘린 상태면 true
-    const topInRange = rect.top <= 0 && rect.top >= -20;
-    // bottom이 화면 아래에서 -20px ~ 100px 사이로 잘린 경우도 허용
-    const bottomInRange = rect.bottom >= window.innerHeight - 80 && rect.bottom <= window.innerHeight + 20;
-
-    return topInRange || bottomInRange;
+  // ✅ 수정된 부분: 헤더의 ABOUT 링크들을 정확히 선택
+  const headerHeroButtons = document.querySelectorAll('.m0 a[href="#hero"]');
+  if (headerHeroButtons.length > 0) {
+    headerHeroButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        handleHeaderHeroClick();
+      });
+    });
   }
 
-  // ✅ wheel 이벤트 - 두 조건 중 하나라도 만족하면 transition 실행
+  // ✅ wheel 이벤트로 트리거 실행
+  let wheelTimeout;
   window.addEventListener(
     "wheel",
     function (e) {
-      if (isTransitioning || hasTransitioned || transitionStarted) return;
+      // 연속 wheel 이벤트 중복 방지
+      clearTimeout(wheelTimeout);
+      wheelTimeout = setTimeout(() => {
+        if (!isTransitioning && !hasTransitioned && canTriggerTransition && e.deltaY > 0) {
+          e.preventDefault();
 
-      if ((isAboutFullyInView() || isAboutNearlyInView()) && e.deltaY > 0) {
-        e.preventDefault();
-        startTransition();
-      }
+          // header 클릭 후 첫 스크롤 시도인 경우 스크롤 완전 방지
+          if (isHeaderClick) {
+            document.body.style.overflow = "hidden";
+          }
+
+          startTransition();
+          canTriggerTransition = false;
+        }
+      }, 10);
     },
     { passive: false }
   );
 
-  // ✅ 스크롤 올릴 때 초기화
+  // ✅ 스크롤 올릴 때 리셋 (디바운스 추가)
+  let scrollTimeout;
   window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    if (hasTransitioned && scrollY < window.innerHeight / 2 && !isTransitioning) {
-      resetTransition();
-    }
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const scrollY = window.scrollY;
+      // hero 섹션 상단 근처로 돌아왔을 때 리셋
+      if (hasTransitioned && scrollY < heroSection.offsetHeight * 0.3 && !isTransitioning) {
+        resetTransition();
+      }
+    }, 50);
   });
 
-  // ✅ 새로고침 시 초기 상태 복원
-  window.addEventListener("beforeunload", function () {
+  // ✅ 페이지 로드/새로고침 시 초기화
+  function initializePage() {
     document.body.style.overflow = "auto";
     heroSection.style.opacity = "1";
     heroSection.style.pointerEvents = "auto";
@@ -161,6 +213,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     hasTransitioned = false;
     isTransitioning = false;
-    transitionStarted = false;
+    canTriggerTransition = false;
+  }
+
+  // 페이지 로드 시 초기화
+  initializePage();
+
+  // beforeunload 이벤트
+  window.addEventListener("beforeunload", initializePage);
+
+  // 윈도우 리사이즈 시 heroLine 크기 조정
+  window.addEventListener("resize", () => {
+    if (!hasTransitioned && !isTransitioning) {
+      heroLine.style.width = getInitialHeroLineWidth() + "px";
+      heroLine.style.height = getInitialHeroLineHeight() + "px";
+    }
   });
 });
