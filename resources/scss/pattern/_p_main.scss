@@ -181,6 +181,10 @@
       @include sm-only {
         font-size: 1.3rem;
       }
+
+      @media (max-width: 430px) {
+        font-size: 1.1rem;
+      }
     }
   }
 }
@@ -621,6 +625,11 @@
       justify-content: center;
     }
 
+    @media (max-width: 460px) {
+      gap: 10px;
+      justify-content: center;
+    }
+
     .skill-item,
     .skill-item2,
     .skill-item3 {
@@ -741,6 +750,10 @@
           @include sm-only {
             font-size: 1.8rem;
           }
+
+          @media (max-width: 460px) {
+            font-size: 1.6rem;
+          }
         }
       }
     }
@@ -858,15 +871,10 @@
   }
 }
 
-.gucci {
-  background-size: cover;
-  background-position: center;
-}
-
+.gucci,
 .bokjak,
 .popmart,
 .hanatour {
-  // background-size: 90%;
   background-size: cover;
   background-position: center;
 }
@@ -1011,7 +1019,7 @@
 
     .renewal {
       color: red;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
 
       &:hover {
         color: yellow;
@@ -1067,41 +1075,19 @@
 
   // bokjak 섹션
   .bokjak {
-    background-image: url("../../images/component/project/bokjak.png");
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../images/component/project/bokjak.jpg") center/cover no-repeat;
     z-index: 2;
-
-    // &::before {
-    //   content: "";
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   right: 0;
-    //   bottom: 0;
-    //   background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, transparent 15%, transparent 85%, rgba(0, 0, 0, 0.8) 100%);
-    //   pointer-events: none;
-    // }
   }
 
   // popmart 섹션
   .popmart {
-    background-image: url("../../images/component/project/popmart.png");
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../images/component/project/popmart.jpg") center/cover no-repeat;
     z-index: 3;
-
-    // &::before {
-    //   content: "";
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   right: 0;
-    //   bottom: 0;
-    //   background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, transparent 15%);
-    //   pointer-events: none;
-    // }
   }
 
   // gucci 섹션
   .gucci {
-    background-image: url("../../images/component/project/gucci.png");
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../images/component/project/gucci.jpg") center/cover no-repeat;
     z-index: 4;
   }
 
@@ -1110,6 +1096,7 @@
     background-image: url("../../images/component/project/hanatour.png");
     z-index: 5;
   }
+
   .bokjak,
   .popmart,
   .gucci,
@@ -1399,11 +1386,11 @@
     }
     @media (max-width: 499px) {
       font-size: 9.6rem;
-      padding: 350px 0 0;
+      padding: 320px 0 0;
     }
     @media (max-width: 440px) {
       font-size: 9rem;
-      padding: 350px 0 0;
+      padding: 330px 0 0;
     }
   }
 }
