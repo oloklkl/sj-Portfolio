@@ -49,7 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
     heroLine.style.width = originalWidth + "px";
     heroLine.style.height = originalHeight + "px";
     heroLine.style.zIndex = "100";
-    heroLine.style.transition = "all 2s cubic-bezier(0.4, 0, 0.2, 1)";
+    // 헤더 클릭일 때와 스크롤일 때 다른 속도 적용
+    const transitionDuration = isHeaderClick ? "2s" : "1.2s"; // 스크롤일 때 더 빠름
+    heroLine.style.transition = `all ${transitionDuration} cubic-bezier(0.4, 0, 0.2, 1)`;
 
     setTimeout(() => {
       heroLine.style.width = "100vw";
