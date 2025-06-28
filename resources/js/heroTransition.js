@@ -2,10 +2,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const heroSection = document.querySelector(".hero");
   const heroLine = document.getElementById("heroLine");
   const aboutSection = document.querySelector(".about");
+
   let isTransitioning = false;
   let hasTransitioned = false;
   let canTriggerTransition = false;
-  let isHeaderClick = false; // header 클릭 여부 플래그
+  let isHeaderClick = false;
 
   if (!heroSection || !heroLine || !aboutSection) return;
 
@@ -25,11 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isTransitioning || hasTransitioned) return;
 
     isTransitioning = true;
-    document.body.style.overflow = "hidden";
 
     const rect = heroLine.getBoundingClientRect();
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
     const originalLeft = rect.left + scrollLeft;
     const originalTop = rect.top + scrollTop;
     const originalWidth = rect.width;
@@ -63,8 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
       heroSection.style.pointerEvents = "none";
       aboutSection.style.position = "relative";
       aboutSection.style.zIndex = "10";
-      document.body.style.overflow = "auto";
 
+      document.body.style.overflow = "auto"; // 트랜지션 끝난 후 스크롤 가능
       hasTransitioned = true;
       isTransitioning = false;
 
@@ -78,10 +79,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isTransitioning) return;
 
     isTransitioning = true;
-    document.body.style.overflow = "auto";
 
+    document.body.style.overflow = "auto";
     heroSection.style.opacity = "1";
     heroSection.style.pointerEvents = "auto";
+
     heroLine.style.display = "block";
     heroLine.style.position = "relative";
     heroLine.style.width = getInitialHeroLineWidth() + "px";
@@ -91,6 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
     heroLine.style.transform = "none";
     heroLine.style.zIndex = "auto";
     heroLine.style.transition = "none";
+
     aboutSection.style.position = "static";
 
     const existingPlaceholder = document.getElementById("heroLinePlaceholder");
@@ -100,18 +103,12 @@ document.addEventListener("DOMContentLoaded", function () {
     isTransitioning = false;
     canTriggerTransition = false;
     isHeaderClick = false;
-
-    // 다음 프레임에서 transition 가능하도록 설정
-    setTimeout(() => {
-      isTransitioning = false;
-    }, 100);
   }
 
-  // ✅ hero 섹션을 관찰하고 threshold를 낮춤
+  // ✅ hero 섹션 감시 (스크롤로 도달했을 때 트리거 준비)
   const heroObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        // hero가 화면에 거의 다 보이면 트랜지션 준비 (header 클릭이 아닐 때만)
         if (entry.isIntersecting && entry.intersectionRatio >= 0.8 && !hasTransitioned && !isHeaderClick) {
           canTriggerTransition = true;
         } else if (!entry.isIntersecting || entry.intersectionRatio < 0.5) {
@@ -121,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       root: null,
-      threshold: [0.5, 0.8, 1.0], // 여러 임계점으로 더 정확한 감지
+      threshold: [0.5, 0.8, 1.0],
     }
   );
 
@@ -130,21 +127,15 @@ document.addEventListener("DOMContentLoaded", function () {
   function handleHeaderHeroClick() {
     if (!isTransitioning && !hasTransitioned) {
       isHeaderClick = true;
-
-      // 즉시 스크롤 막기
-      document.body.style.overflow = "hidden";
-
-      // hero 섹션으로 부드럽게 이동
-      heroSection.scrollIntoView({ behavior: "smooth" });
-
-      // 이동 완료 후 트랜지션 준비
+      document.body.style.overflow = "hidden"; // ✅ 바로 스크롤 방지
+      heroSection.scrollIntoView({ behavior: "auto" }); // 즉시 이동
       setTimeout(() => {
         canTriggerTransition = true;
-      }, 1000);
+      }, 100);
     }
   }
 
-  // ✅ 수정된 부분: 헤더의 ABOUT 링크들을 정확히 선택
+  // ✅ header에서 hero로 이동하는 버튼 처리
   const headerHeroButtons = document.querySelectorAll('.m0 a[href="#hero"]');
   if (headerHeroButtons.length > 0) {
     headerHeroButtons.forEach((button) => {
@@ -155,48 +146,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ✅ wheel 이벤트로 트리거 실행
-  let wheelTimeout;
+  // ✅ wheel 이벤트에서 트리거
   window.addEventListener(
     "wheel",
     function (e) {
-      // 연속 wheel 이벤트 중복 방지
-      clearTimeout(wheelTimeout);
-      wheelTimeout = setTimeout(() => {
-        if (!isTransitioning && !hasTransitioned && canTriggerTransition && e.deltaY > 0) {
-          e.preventDefault();
-
-          // header 클릭 후 첫 스크롤 시도인 경우 스크롤 완전 방지
-          if (isHeaderClick) {
-            document.body.style.overflow = "hidden";
-          }
-
-          startTransition();
-          canTriggerTransition = false;
-        }
-      }, 10);
+      if (!isTransitioning && !hasTransitioned && canTriggerTransition && e.deltaY > 0) {
+        e.preventDefault();
+        document.body.style.overflow = "hidden"; // ✅ 스크롤 막고
+        startTransition(); // 트랜지션 실행
+        canTriggerTransition = false;
+      }
     },
     { passive: false }
   );
 
-  // ✅ 스크롤 올릴 때 리셋 (디바운스 추가)
+  // ✅ 스크롤 위로 올릴 때 리셋
   let scrollTimeout;
   window.addEventListener("scroll", () => {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(() => {
       const scrollY = window.scrollY;
-      // hero 섹션 상단 근처로 돌아왔을 때 리셋
       if (hasTransitioned && scrollY < heroSection.offsetHeight * 0.3 && !isTransitioning) {
         resetTransition();
       }
     }, 50);
   });
 
-  // ✅ 페이지 로드/새로고침 시 초기화
+  // ✅ 초기화 함수
   function initializePage() {
     document.body.style.overflow = "auto";
     heroSection.style.opacity = "1";
     heroSection.style.pointerEvents = "auto";
+
     heroLine.style.position = "relative";
     heroLine.style.width = getInitialHeroLineWidth() + "px";
     heroLine.style.height = getInitialHeroLineHeight() + "px";
@@ -206,6 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
     heroLine.style.display = "block";
     heroLine.style.transition = "none";
     heroLine.style.zIndex = "auto";
+
     aboutSection.style.position = "static";
 
     const existingPlaceholder = document.getElementById("heroLinePlaceholder");
@@ -214,15 +196,16 @@ document.addEventListener("DOMContentLoaded", function () {
     hasTransitioned = false;
     isTransitioning = false;
     canTriggerTransition = false;
+    isHeaderClick = false;
   }
 
-  // 페이지 로드 시 초기화
+  // ✅ 초기화 실행
   initializePage();
 
-  // beforeunload 이벤트
+  // 새로고침 시 초기화
   window.addEventListener("beforeunload", initializePage);
 
-  // 윈도우 리사이즈 시 heroLine 크기 조정
+  // 리사이즈 시 heroLine 크기 조정
   window.addEventListener("resize", () => {
     if (!hasTransitioned && !isTransitioning) {
       heroLine.style.width = getInitialHeroLineWidth() + "px";
