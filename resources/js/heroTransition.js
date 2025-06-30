@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function getInitialHeroLineHeight() {
     const width = window.innerWidth;
-    if (width < 600) return 50;
-    if (width < 1000) return 80;
+    if (width < 600) return 60;
+    if (width < 1000) return 90;
     if (width < 1400) return 100;
     return 140;
   }
