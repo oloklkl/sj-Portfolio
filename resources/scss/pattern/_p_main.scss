@@ -371,6 +371,11 @@
       @media (max-width: 499px) {
         line-height: 100px;
       }
+
+      @media (max-width: 400px) {
+        font-size: 4rem;
+        line-height: 70px;
+      }
     }
   }
 
@@ -404,7 +409,7 @@
       @media (max-width: 499px) {
         width: 130px;
         height: auto;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         align-self: center;
       }
     }
@@ -435,7 +440,7 @@
       }
 
       @media (max-width: 499px) {
-        gap: 10px;
+        gap: 8px;
       }
 
       h3 {
@@ -453,6 +458,7 @@
 
         @include sm-only {
           font-size: 1.8rem;
+          margin-bottom: 8px;
         }
       }
 
@@ -588,11 +594,18 @@
     @include md-only {
       font-size: 9rem;
       line-height: 200px;
+      margin-right: 0;
     }
 
     @include sm-only {
       font-size: 5rem;
       line-height: 150px;
+      margin-right: 0;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 4rem;
+      line-height: 120px;
     }
   }
 

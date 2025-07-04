@@ -771,6 +771,12 @@ legend {
     line-height: 100px;
   }
 }
+@media (max-width: 400px) {
+  .about .about-title h2 {
+    font-size: 4rem;
+    line-height: 70px;
+  }
+}
 .about .about-content {
   display: flex;
   justify-content: space-around;
@@ -806,7 +812,7 @@ legend {
   .about .about-content .profile-image {
     width: 130px;
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     align-self: center;
   }
 }
@@ -840,7 +846,7 @@ legend {
 }
 @media (max-width: 499px) {
   .about .about-content .about-info {
-    gap: 10px;
+    gap: 8px;
   }
 }
 .about .about-content .about-info h3 {
@@ -861,6 +867,7 @@ legend {
 @media (max-width: 599px) {
   .about .about-content .about-info h3 {
     font-size: 1.8rem;
+    margin-bottom: 8px;
   }
 }
 .about .about-content .about-info .profile-info .info-item,
@@ -1005,12 +1012,20 @@ legend {
   .skills .section-title {
     font-size: 9rem;
     line-height: 200px;
+    margin-right: 0;
   }
 }
 @media (max-width: 599px) {
   .skills .section-title {
     font-size: 5rem;
     line-height: 150px;
+    margin-right: 0;
+  }
+}
+@media (max-width: 400px) {
+  .skills .section-title {
+    font-size: 4rem;
+    line-height: 120px;
   }
 }
 .skills .fade {
