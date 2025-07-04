@@ -456,7 +456,7 @@ legend {
 }
 @media (max-width: 599px) {
   .intro .intro-content {
-    padding: 55rem 0 0;
+    padding: 50rem 0 0;
   }
 }
 .intro .title-wrap h2 {
@@ -2031,7 +2031,7 @@ legend {
 @media (max-width: 440px) {
   .contact-details .contact-footer {
     font-size: 9rem;
-    padding: 330px 0 0;
+    padding: 280px 0 0;
   }
 }
 
