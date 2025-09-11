@@ -26,16 +26,22 @@ window.addEventListener("load", () => {
   initGnb();
 
   const introWrapper = document.querySelector(".intro-wrapper");
+  const headerMenuItems = document.querySelectorAll(".gnb li .text-top a");
+  const titleH2 = document.querySelector(".title-wrap h2");
+  const contentH3 = document.querySelector(".content-wrap h3");
+  const contentPs = document.querySelectorAll(".content-wrap p");
+
+  // ✅ GNB 메뉴 초기 상태 바로 숨김 (깜빡임 방지)
+  if (headerMenuItems.length > 0) {
+    gsap.set(headerMenuItems, { opacity: 0, x: -20 });
+  }
+  if (titleH2) gsap.set(titleH2, { opacity: 0, scale: 0.8 });
+  if (contentH3) gsap.set(contentH3, { opacity: 0, y: 20 });
+  if (contentPs.length > 0) gsap.set(contentPs, { opacity: 0, y: 20 });
 
   function runAnimation() {
-    const headerMenuItems = document.querySelectorAll(".gnb li .text-top a");
-    const titleH2 = document.querySelector(".title-wrap h2");
-    const contentH3 = document.querySelector(".content-wrap h3");
-    const contentPs = document.querySelectorAll(".content-wrap p");
-
     // GNB 메뉴
     if (headerMenuItems.length > 0) {
-      gsap.set(headerMenuItems, { opacity: 0, x: -20 });
       gsap.to(headerMenuItems, {
         duration: 0.6,
         opacity: 1,
@@ -48,7 +54,6 @@ window.addEventListener("load", () => {
 
     // 타이틀
     if (titleH2) {
-      gsap.set(titleH2, { opacity: 0, scale: 0.8 });
       gsap.to(titleH2, {
         duration: 1.2,
         opacity: 1,
@@ -60,7 +65,6 @@ window.addEventListener("load", () => {
 
     // 서브 타이틀
     if (contentH3) {
-      gsap.set(contentH3, { opacity: 0, y: 20 });
       gsap.to(contentH3, {
         duration: 0.8,
         opacity: 1,
@@ -72,7 +76,6 @@ window.addEventListener("load", () => {
 
     // 본문
     if (contentPs.length > 0) {
-      gsap.set(contentPs, { opacity: 0, y: 20 });
       gsap.to(contentPs, {
         duration: 0.6,
         opacity: 1,
