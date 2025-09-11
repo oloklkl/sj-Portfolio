@@ -26,10 +26,6 @@ window.addEventListener("load", () => {
   initGnb();
 
   const introWrapper = document.querySelector(".intro-wrapper");
-  if (!introWrapper) {
-    console.log("intro-wrapper가 없어서 애니메이션 실행 안함");
-    return;
-  }
 
   function runAnimation() {
     const headerMenuItems = document.querySelectorAll(".gnb li .text-top a");
@@ -37,15 +33,9 @@ window.addEventListener("load", () => {
     const contentH3 = document.querySelector(".content-wrap h3");
     const contentPs = document.querySelectorAll(".content-wrap p");
 
+    // GNB 메뉴
     if (headerMenuItems.length > 0) {
       gsap.set(headerMenuItems, { opacity: 0, x: -20 });
-    }
-
-    gsap.set(titleH2, { opacity: 0, scale: 0.8 });
-
-    introWrapper.classList.add("open");
-
-    if (headerMenuItems.length > 0) {
       gsap.to(headerMenuItems, {
         duration: 0.6,
         opacity: 1,
@@ -56,32 +46,49 @@ window.addEventListener("load", () => {
       });
     }
 
-    setTimeout(() => {
+    // 타이틀
+    if (titleH2) {
+      gsap.set(titleH2, { opacity: 0, scale: 0.8 });
       gsap.to(titleH2, {
         duration: 1.2,
         opacity: 1,
         scale: 1,
         ease: "back.out(1.4)",
+        delay: 1.6,
       });
+    }
 
+    // 서브 타이틀
+    if (contentH3) {
+      gsap.set(contentH3, { opacity: 0, y: 20 });
       gsap.to(contentH3, {
         duration: 0.8,
         opacity: 1,
         y: 0,
         ease: "power2.out",
-        delay: 0.4,
+        delay: 2,
       });
+    }
 
+    // 본문
+    if (contentPs.length > 0) {
+      gsap.set(contentPs, { opacity: 0, y: 20 });
       gsap.to(contentPs, {
         duration: 0.6,
         opacity: 1,
         y: 0,
         stagger: 0.1,
         ease: "power2.out",
-        delay: 0.7,
+        delay: 2.3,
       });
-    }, 1600);
+    }
   }
 
+  // intro-wrapper 있으면 class 추가
+  if (introWrapper) {
+    introWrapper.classList.add("open");
+  }
+
+  // 애니메이션 실행
   setTimeout(runAnimation, 500);
 });
