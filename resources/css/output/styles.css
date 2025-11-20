@@ -1523,6 +1523,8 @@ legend {
 .gucci .project-description .contribution span,
 .hanatour .project-description .contribution span {
   font-size: 3rem;
+  font-weight: bold;
+  color: #0052cc;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
   .bokjak .project-description .contribution span,
