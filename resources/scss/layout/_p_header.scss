@@ -8,11 +8,12 @@ a {
 }
 
 #header {
-  position: relative;
+  position: absolute;
   top: 0;
-  z-index: 100;
+  left: 0;
   width: 100%;
-  background: $gray-90;
+  z-index: 100;
+  background-color: transparent;
   transition: background $transition-ease;
 
   .inner {
@@ -107,7 +108,9 @@ a {
       width: 100%;
       display: flex;
       align-items: center;
-      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      transition:
+        transform 0.3s ease-in-out,
+        opacity 0.3s ease-in-out;
     }
 
     .text-top {
