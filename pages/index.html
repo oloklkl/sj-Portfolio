@@ -41,10 +41,40 @@
       <a href="#container">본문 바로가기</a>
     </div>
     <div id="wrap">
-      <div class="intro-wrapper">
+      <!-- Flash -->
+      <div id="flash-overlay"></div>
+
+      <div class="intro-wrapper" id="introWrapper">
         <header id="header" include-html="./layout/header.html"></header>
-        <div class="door left-door"></div>
-        <div class="door right-door"></div>
+        <!-- LEFT DOOR -->
+        <div class="door left-door" id="leftDoor">
+          <div class="door-watermark">EVOLVE</div>
+          <div class="scan-line"></div>
+          <div class="door-glare" id="leftGlare"></div>
+          <div class="door-text">
+            <span class="label">Portfolio</span>
+            <span class="value">IN PROGRESS</span>
+          </div>
+          <div class="door-counter" id="leftCounter">000</div>
+          <!-- glitch lines -->
+          <div class="glitch-line" style="top: 30%"></div>
+          <div class="glitch-line" style="top: 60%"></div>
+        </div>
+
+        <!-- RIGHT DOOR -->
+        <div class="door right-door" id="rightDoor">
+          <div class="door-watermark">EVOLVE</div>
+          <div class="scan-line"></div>
+          <div class="door-glare" id="rightGlare"></div>
+          <div class="door-text">
+            <span class="label">2026</span>
+            <span class="value">EVOLVED</span>
+          </div>
+          <div class="door-counter" id="rightCounter">000</div>
+          <!-- glitch lines -->
+          <div class="glitch-line" style="top: 45%"></div>
+          <div class="glitch-line" style="top: 72%"></div>
+        </div>
 
         <!-- intro -->
         <section class="intro">
