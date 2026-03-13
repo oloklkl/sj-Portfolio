@@ -1292,15 +1292,15 @@
     z-index: 3;
   }
 
-  // popmart 섹션
-  .popmart {
-    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)), url("../../images/component/project/popmart.jpg");
-    z-index: 4;
-  }
-
   // gucci 섹션
   .gucci {
     background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)), url("../../images/component/project/gucci.jpg");
+    z-index: 4;
+  }
+
+  // popmart 섹션
+  .popmart {
+    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)), url("../../images/component/project/popmart.jpg");
     z-index: 5;
   }
 

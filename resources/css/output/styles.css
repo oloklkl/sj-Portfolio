@@ -1936,12 +1936,12 @@ body.is-intro-lock {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../../images/component/project/bokjak.jpg");
   z-index: 3;
 }
-.project-sections .popmart {
-  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)), url("../../images/component/project/popmart.jpg");
-  z-index: 4;
-}
 .project-sections .gucci {
   background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)), url("../../images/component/project/gucci.jpg");
+  z-index: 4;
+}
+.project-sections .popmart {
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)), url("../../images/component/project/popmart.jpg");
   z-index: 5;
 }
 .project-sections .hanatour {
