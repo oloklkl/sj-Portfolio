@@ -379,6 +379,19 @@ legend {
   background-color: #111111;
 }
 
+html.is-intro-lock,
+body.is-intro-lock {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body.is-intro-lock {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  touch-action: none;
+}
+
 .inner {
   position: relative;
   width: 100%;
@@ -1545,14 +1558,7 @@ legend {
   transform-style: preserve-3d;
 }
 
-.gucci,
-.bokjak,
-.popmart,
-.hanatour {
-  background-size: cover;
-  background-position: center;
-}
-
+.mr-pizza,
 .bokjak,
 .popmart,
 .gucci,
@@ -1560,6 +1566,7 @@ legend {
   color: #ffffff;
   padding: 100px 0;
 }
+.mr-pizza .inner,
 .bokjak .inner,
 .popmart .inner,
 .gucci .inner,
@@ -1567,12 +1574,14 @@ legend {
   display: flex;
   justify-content: space-between;
 }
+.mr-pizza .project-description,
 .bokjak .project-description,
 .popmart .project-description,
 .gucci .project-description,
 .hanatour .project-description {
   padding-top: 250px;
 }
+.mr-pizza .project-description .project-type,
 .bokjak .project-description .project-type,
 .popmart .project-description .project-type,
 .gucci .project-description .project-type,
@@ -1581,6 +1590,7 @@ legend {
   font-weight: 400;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
+  .mr-pizza .project-description .project-type,
   .bokjak .project-description .project-type,
   .popmart .project-description .project-type,
   .gucci .project-description .project-type,
@@ -1589,6 +1599,7 @@ legend {
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
+  .mr-pizza .project-description .project-type,
   .bokjak .project-description .project-type,
   .popmart .project-description .project-type,
   .gucci .project-description .project-type,
@@ -1597,6 +1608,7 @@ legend {
   }
 }
 @media (max-width: 599px) {
+  .mr-pizza .project-description .project-type,
   .bokjak .project-description .project-type,
   .popmart .project-description .project-type,
   .gucci .project-description .project-type,
@@ -1604,6 +1616,7 @@ legend {
     font-size: 1.6rem;
   }
 }
+.mr-pizza .project-description .project-title,
 .bokjak .project-description .project-title,
 .popmart .project-description .project-title,
 .gucci .project-description .project-title,
@@ -1614,6 +1627,7 @@ legend {
   font-weight: 500;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
+  .mr-pizza .project-description .project-title,
   .bokjak .project-description .project-title,
   .popmart .project-description .project-title,
   .gucci .project-description .project-title,
@@ -1622,6 +1636,7 @@ legend {
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
+  .mr-pizza .project-description .project-title,
   .bokjak .project-description .project-title,
   .popmart .project-description .project-title,
   .gucci .project-description .project-title,
@@ -1630,6 +1645,7 @@ legend {
   }
 }
 @media (max-width: 599px) {
+  .mr-pizza .project-description .project-title,
   .bokjak .project-description .project-title,
   .popmart .project-description .project-title,
   .gucci .project-description .project-title,
@@ -1637,6 +1653,7 @@ legend {
     font-size: 5rem;
   }
 }
+.mr-pizza .project-description .contribution,
 .bokjak .project-description .contribution,
 .popmart .project-description .contribution,
 .gucci .project-description .contribution,
@@ -1645,6 +1662,7 @@ legend {
   margin-bottom: 10px;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
+  .mr-pizza .project-description .contribution,
   .bokjak .project-description .contribution,
   .popmart .project-description .contribution,
   .gucci .project-description .contribution,
@@ -1653,6 +1671,7 @@ legend {
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
+  .mr-pizza .project-description .contribution,
   .bokjak .project-description .contribution,
   .popmart .project-description .contribution,
   .gucci .project-description .contribution,
@@ -1661,6 +1680,7 @@ legend {
   }
 }
 @media (max-width: 599px) {
+  .mr-pizza .project-description .contribution,
   .bokjak .project-description .contribution,
   .popmart .project-description .contribution,
   .gucci .project-description .contribution,
@@ -1668,6 +1688,7 @@ legend {
     font-size: 2rem;
   }
 }
+.mr-pizza .project-description .contribution span,
 .bokjak .project-description .contribution span,
 .popmart .project-description .contribution span,
 .gucci .project-description .contribution span,
@@ -1677,6 +1698,7 @@ legend {
   color: #0052cc;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
+  .mr-pizza .project-description .contribution span,
   .bokjak .project-description .contribution span,
   .popmart .project-description .contribution span,
   .gucci .project-description .contribution span,
@@ -1685,6 +1707,7 @@ legend {
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
+  .mr-pizza .project-description .contribution span,
   .bokjak .project-description .contribution span,
   .popmart .project-description .contribution span,
   .gucci .project-description .contribution span,
@@ -1693,6 +1716,7 @@ legend {
   }
 }
 @media (max-width: 599px) {
+  .mr-pizza .project-description .contribution span,
   .bokjak .project-description .contribution span,
   .popmart .project-description .contribution span,
   .gucci .project-description .contribution span,
@@ -1700,6 +1724,7 @@ legend {
     font-size: 2.2rem;
   }
 }
+.mr-pizza .project-description .project-summary,
 .bokjak .project-description .project-summary,
 .popmart .project-description .project-summary,
 .gucci .project-description .project-summary,
@@ -1708,6 +1733,7 @@ legend {
   margin-bottom: 30px;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
+  .mr-pizza .project-description .project-summary,
   .bokjak .project-description .project-summary,
   .popmart .project-description .project-summary,
   .gucci .project-description .project-summary,
@@ -1716,6 +1742,7 @@ legend {
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
+  .mr-pizza .project-description .project-summary,
   .bokjak .project-description .project-summary,
   .popmart .project-description .project-summary,
   .gucci .project-description .project-summary,
@@ -1724,6 +1751,7 @@ legend {
   }
 }
 @media (max-width: 599px) {
+  .mr-pizza .project-description .project-summary,
   .bokjak .project-description .project-summary,
   .popmart .project-description .project-summary,
   .gucci .project-description .project-summary,
@@ -1731,6 +1759,7 @@ legend {
     font-size: 1.3rem;
   }
 }
+.mr-pizza .project-description .view-project-button,
 .bokjak .project-description .view-project-button,
 .popmart .project-description .view-project-button,
 .gucci .project-description .view-project-button,
@@ -1740,6 +1769,7 @@ legend {
   margin-bottom: 20px;
   transition: all 0.3s ease;
 }
+.mr-pizza .project-description .view-project-button:hover,
 .bokjak .project-description .view-project-button:hover,
 .popmart .project-description .view-project-button:hover,
 .gucci .project-description .view-project-button:hover,
@@ -1747,6 +1777,7 @@ legend {
   color: yellow;
   transform: scale(1.08);
 }
+.mr-pizza .project-description .view-project-button:hover span,
 .bokjak .project-description .view-project-button:hover span,
 .popmart .project-description .view-project-button:hover span,
 .gucci .project-description .view-project-button:hover span,
@@ -1754,6 +1785,7 @@ legend {
   border: 2px solid yellow;
   background-color: rgba(255, 255, 0, 0.1);
 }
+.mr-pizza .project-description .view-project-button span,
 .bokjak .project-description .view-project-button span,
 .popmart .project-description .view-project-button span,
 .gucci .project-description .view-project-button span,
@@ -1765,6 +1797,7 @@ legend {
   transition: all 0.3s ease;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
+  .mr-pizza .project-description .view-project-button span,
   .bokjak .project-description .view-project-button span,
   .popmart .project-description .view-project-button span,
   .gucci .project-description .view-project-button span,
@@ -1773,6 +1806,7 @@ legend {
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
+  .mr-pizza .project-description .view-project-button span,
   .bokjak .project-description .view-project-button span,
   .popmart .project-description .view-project-button span,
   .gucci .project-description .view-project-button span,
@@ -1781,6 +1815,7 @@ legend {
   }
 }
 @media (max-width: 599px) {
+  .mr-pizza .project-description .view-project-button span,
   .bokjak .project-description .view-project-button span,
   .popmart .project-description .view-project-button span,
   .gucci .project-description .view-project-button span,
@@ -1788,6 +1823,7 @@ legend {
     font-size: 2rem;
   }
 }
+.mr-pizza .project-description .renewal,
 .bokjak .project-description .renewal,
 .popmart .project-description .renewal,
 .gucci .project-description .renewal,
@@ -1795,18 +1831,21 @@ legend {
   color: red;
   transition: all 0.3s ease;
 }
+.mr-pizza .project-description .renewal:hover,
 .bokjak .project-description .renewal:hover,
 .popmart .project-description .renewal:hover,
 .gucci .project-description .renewal:hover,
 .hanatour .project-description .renewal:hover {
   color: yellow;
 }
+.mr-pizza .project-description .renewal:hover span,
 .bokjak .project-description .renewal:hover span,
 .popmart .project-description .renewal:hover span,
 .gucci .project-description .renewal:hover span,
 .hanatour .project-description .renewal:hover span {
   border: 2px solid yellow;
 }
+.mr-pizza .project-description .renewal p,
 .bokjak .project-description .renewal p,
 .popmart .project-description .renewal p,
 .gucci .project-description .renewal p,
@@ -1814,6 +1853,7 @@ legend {
   display: inline;
   color: #ffffff;
 }
+.mr-pizza .project-progress span,
 .bokjak .project-progress span,
 .popmart .project-progress span,
 .gucci .project-progress span,
@@ -1821,6 +1861,7 @@ legend {
   font-size: 3.5rem;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
+  .mr-pizza .project-progress span,
   .bokjak .project-progress span,
   .popmart .project-progress span,
   .gucci .project-progress span,
@@ -1829,6 +1870,7 @@ legend {
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
+  .mr-pizza .project-progress span,
   .bokjak .project-progress span,
   .popmart .project-progress span,
   .gucci .project-progress span,
@@ -1837,6 +1879,7 @@ legend {
   }
 }
 @media (max-width: 599px) {
+  .mr-pizza .project-progress span,
   .bokjak .project-progress span,
   .popmart .project-progress span,
   .gucci .project-progress span,
@@ -1844,6 +1887,7 @@ legend {
     font-size: 2dvh;
   }
 }
+.mr-pizza .project-progress span .point,
 .bokjak .project-progress span .point,
 .popmart .project-progress span .point,
 .gucci .project-progress span .point,
@@ -1851,6 +1895,7 @@ legend {
   font-size: 5rem;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
+  .mr-pizza .project-progress span .point,
   .bokjak .project-progress span .point,
   .popmart .project-progress span .point,
   .gucci .project-progress span .point,
@@ -1859,6 +1904,7 @@ legend {
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
+  .mr-pizza .project-progress span .point,
   .bokjak .project-progress span .point,
   .popmart .project-progress span .point,
   .gucci .project-progress span .point,
@@ -1867,6 +1913,7 @@ legend {
   }
 }
 @media (max-width: 599px) {
+  .mr-pizza .project-progress span .point,
   .bokjak .project-progress span .point,
   .popmart .project-progress span .point,
   .gucci .project-progress span .point,
@@ -1878,26 +1925,37 @@ legend {
 .project-sections {
   position: relative;
 }
-.project-sections .bokjak {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../images/component/project/bokjak.jpg") center/cover no-repeat;
+.project-sections .mr-pizza {
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)), url("../../images/component/project/mr-pizza.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right 4% center;
   z-index: 2;
 }
-.project-sections .popmart {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../images/component/project/popmart.jpg") center/cover no-repeat;
+.project-sections .bokjak {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../../images/component/project/bokjak.jpg");
   z-index: 3;
 }
-.project-sections .gucci {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../images/component/project/gucci.jpg") center/cover no-repeat;
+.project-sections .popmart {
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)), url("../../images/component/project/popmart.jpg");
   z-index: 4;
+}
+.project-sections .gucci {
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)), url("../../images/component/project/gucci.jpg");
+  z-index: 5;
 }
 .project-sections .hanatour {
   background-image: url("../../images/component/project/hanatour.png");
-  z-index: 5;
+  z-index: 6;
 }
+.project-sections .mr-pizza,
 .project-sections .bokjak,
 .project-sections .popmart,
 .project-sections .gucci,
 .project-sections .hanatour {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   position: sticky;
   top: 0;
 }

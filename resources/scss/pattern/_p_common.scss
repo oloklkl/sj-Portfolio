@@ -104,3 +104,16 @@
   height: 100vh;
   background-color: $gray-90;
 }
+
+html.is-intro-lock,
+body.is-intro-lock {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body.is-intro-lock {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  touch-action: none;
+}

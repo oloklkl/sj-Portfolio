@@ -1080,15 +1080,8 @@
   }
 }
 
-.gucci,
-.bokjak,
-.popmart,
-.hanatour {
-  background-size: cover;
-  background-position: center;
-}
-
-// bokjak, popmart, gucci, hanatour 섹션 <공통스타일>
+// mr-pizza, bokjak, popmart, gucci, hanatour 섹션 <공통스타일>
+.mr-pizza,
 .bokjak,
 .popmart,
 .gucci,
@@ -1100,6 +1093,7 @@
     display: flex;
     justify-content: space-between;
   }
+
   .project-description {
     padding-top: 250px;
 
@@ -1284,40 +1278,46 @@
 .project-sections {
   position: relative;
 
+  // mr-pizza 섹션
+  .mr-pizza {
+    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)), url("../../images/component/project/mr-pizza.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right 4% center;
+    z-index: 2;
+  }
   // bokjak 섹션
   .bokjak {
-    background:
-      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url("../../images/component/project/bokjak.jpg") center/cover no-repeat;
-    z-index: 2;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../../images/component/project/bokjak.jpg");
+    z-index: 3;
   }
 
   // popmart 섹션
   .popmart {
-    background:
-      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url("../../images/component/project/popmart.jpg") center/cover no-repeat;
-    z-index: 3;
+    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)), url("../../images/component/project/popmart.jpg");
+    z-index: 4;
   }
 
   // gucci 섹션
   .gucci {
-    background:
-      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url("../../images/component/project/gucci.jpg") center/cover no-repeat;
-    z-index: 4;
+    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)), url("../../images/component/project/gucci.jpg");
+    z-index: 5;
   }
 
   // hanatour 섹션
   .hanatour {
     background-image: url("../../images/component/project/hanatour.png");
-    z-index: 5;
+    z-index: 6;
   }
 
+  .mr-pizza,
   .bokjak,
   .popmart,
   .gucci,
   .hanatour {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     position: sticky;
     top: 0;
   }

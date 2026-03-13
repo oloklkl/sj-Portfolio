@@ -142,6 +142,43 @@ function runContentAnimation() {
 // ─────────────────────────────────────────
 // 문 오픈 시퀀스
 // ─────────────────────────────────────────
+let scrollY = 0;
+
+const preventScroll = (e) => {
+  e.preventDefault();
+};
+
+const preventScrollKeys = (e) => {
+  const keys = ["Space", "PageUp", "PageDown", "End", "Home", "ArrowUp", "ArrowDown"];
+  if (keys.includes(e.code)) {
+    e.preventDefault();
+  }
+};
+
+function lockScroll() {
+  scrollY = window.scrollY;
+
+  document.documentElement.classList.add("is-intro-lock");
+  document.body.classList.add("is-intro-lock");
+  document.body.style.top = `-${scrollY}px`;
+
+  window.addEventListener("wheel", preventScroll, { passive: false });
+  window.addEventListener("touchmove", preventScroll, { passive: false });
+  window.addEventListener("keydown", preventScrollKeys, { passive: false });
+}
+
+function unlockScroll() {
+  document.documentElement.classList.remove("is-intro-lock");
+  document.body.classList.remove("is-intro-lock");
+
+  document.body.style.top = "";
+  window.scrollTo(0, scrollY);
+
+  window.removeEventListener("wheel", preventScroll, { passive: false });
+  window.removeEventListener("touchmove", preventScroll, { passive: false });
+  window.removeEventListener("keydown", preventScrollKeys, { passive: false });
+}
+
 function runDoorSequence() {
   const introWrapper = document.querySelector(".intro-wrapper");
   const leftDoor = document.getElementById("leftDoor");
@@ -151,46 +188,41 @@ function runDoorSequence() {
   const leftGlare = document.getElementById("leftGlare");
   const rightGlare = document.getElementById("rightGlare");
 
-  // intro-wrapper가 없으면 그냥 콘텐츠 애니메이션만 실행
   if (!introWrapper) {
     runContentAnimation();
     return;
   }
 
-  // 1. 카운터 시작 (1.1초간)
+  lockScroll();
+
   if (leftCounter) animateCounter(leftCounter, 1.1);
   if (rightCounter) animateCounter(rightCounter, 1.1);
 
-  // 2. 첫 번째 글리치 — 0.3s
   setTimeout(() => {
     if (leftDoor) triggerGlitch(leftDoor);
     if (rightDoor) triggerGlitch(rightDoor);
   }, 300);
 
-  // 3. 두 번째 글리치 — 0.7s
   setTimeout(() => {
     if (leftDoor) triggerGlitch(leftDoor);
     if (rightDoor) triggerGlitch(rightDoor);
   }, 700);
 
-  // 4. 글레어 스윕 — 1.0s (문 열리기 직전)
   setTimeout(() => {
     if (leftGlare) triggerGlare(leftGlare);
     if (rightGlare) triggerGlare(rightGlare);
   }, 1000);
 
-  // 5. 화이트 플래시 + 문 열기 — 1.15s
   setTimeout(() => {
     triggerFlash();
     introWrapper.classList.add("open");
   }, 1150);
 
-  // 6. 콘텐츠 등장 — 1.6s (문이 어느 정도 열린 후)
   setTimeout(() => {
+    unlockScroll();
     runContentAnimation();
   }, 1600);
 }
-
 // ─────────────────────────────────────────
 // INIT
 // ─────────────────────────────────────────
