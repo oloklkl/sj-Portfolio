@@ -252,7 +252,7 @@
 
 .moon-sphere {
   position: absolute;
-  top: 18%;
+  top: 20%;
   left: 55%;
   margin-left: -240px;
   width: 460px;
@@ -689,7 +689,8 @@
 
       .profile-info,
       .education-info,
-      .license-info {
+      .license-info,
+      .experience-info {
         .info-item {
           display: flex;
           border-bottom: 1px solid $gray-80;
@@ -730,45 +731,6 @@
               font-size: 1.4rem;
             }
           }
-        }
-      }
-      .skills-info {
-        .skills-list {
-          margin-bottom: 10px;
-        }
-        .skills-list,
-        .skills-list2 {
-          display: flex;
-        }
-
-        img {
-          display: block;
-          margin-right: 10px;
-        }
-
-        .skill-icon {
-          position: relative;
-          cursor: pointer;
-
-          &:hover .icon-color {
-            opacity: 1;
-          }
-
-          &:hover .icon-dark {
-            opacity: 0;
-          }
-        }
-
-        .icon-color,
-        .icon-dark {
-          transition: opacity 0.3s ease;
-        }
-
-        .icon-color {
-          position: absolute;
-          top: 0;
-          left: 0;
-          opacity: 0;
         }
       }
     }

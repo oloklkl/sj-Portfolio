@@ -353,6 +353,8 @@ legend {
   width: 100%;
   height: 100vh;
   background-color: #fbf0da;
+  background-image: linear-gradient(to right, rgba(60, 50, 30, 0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(60, 50, 30, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 .bokjak,
@@ -614,7 +616,7 @@ body.is-intro-lock {
 
 .moon-sphere {
   position: absolute;
-  top: 18%;
+  top: 20%;
   left: 55%;
   margin-left: -240px;
   width: 460px;
@@ -1080,7 +1082,8 @@ body.is-intro-lock {
 }
 .about .about-content .about-info .profile-info .info-item,
 .about .about-content .about-info .education-info .info-item,
-.about .about-content .about-info .license-info .info-item {
+.about .about-content .about-info .license-info .info-item,
+.about .about-content .about-info .experience-info .info-item {
   display: flex;
   border-bottom: 1px solid #2c2c2c;
   justify-content: space-between;
@@ -1088,7 +1091,8 @@ body.is-intro-lock {
 }
 .about .about-content .about-info .profile-info .info-item .info-label,
 .about .about-content .about-info .education-info .info-item .info-label,
-.about .about-content .about-info .license-info .info-item .info-label {
+.about .about-content .about-info .license-info .info-item .info-label,
+.about .about-content .about-info .experience-info .info-item .info-label {
   font-size: 1.6rem;
   color: #757575;
   margin-right: 30px;
@@ -1096,81 +1100,57 @@ body.is-intro-lock {
 @media (min-width: 1000px) and (max-width: 1399px) {
   .about .about-content .about-info .profile-info .info-item .info-label,
   .about .about-content .about-info .education-info .info-item .info-label,
-  .about .about-content .about-info .license-info .info-item .info-label {
+  .about .about-content .about-info .license-info .info-item .info-label,
+  .about .about-content .about-info .experience-info .info-item .info-label {
     font-size: 1.4rem;
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
   .about .about-content .about-info .profile-info .info-item .info-label,
   .about .about-content .about-info .education-info .info-item .info-label,
-  .about .about-content .about-info .license-info .info-item .info-label {
+  .about .about-content .about-info .license-info .info-item .info-label,
+  .about .about-content .about-info .experience-info .info-item .info-label {
     font-size: 1.2rem;
   }
 }
 @media (max-width: 599px) {
   .about .about-content .about-info .profile-info .info-item .info-label,
   .about .about-content .about-info .education-info .info-item .info-label,
-  .about .about-content .about-info .license-info .info-item .info-label {
+  .about .about-content .about-info .license-info .info-item .info-label,
+  .about .about-content .about-info .experience-info .info-item .info-label {
     font-size: 1.2rem;
   }
 }
 .about .about-content .about-info .profile-info .info-item .info-value,
 .about .about-content .about-info .education-info .info-item .info-value,
-.about .about-content .about-info .license-info .info-item .info-value {
+.about .about-content .about-info .license-info .info-item .info-value,
+.about .about-content .about-info .experience-info .info-item .info-value {
   font-size: 1.8rem;
   color: #f5f5f5;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
   .about .about-content .about-info .profile-info .info-item .info-value,
   .about .about-content .about-info .education-info .info-item .info-value,
-  .about .about-content .about-info .license-info .info-item .info-value {
+  .about .about-content .about-info .license-info .info-item .info-value,
+  .about .about-content .about-info .experience-info .info-item .info-value {
     font-size: 1.6rem;
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
   .about .about-content .about-info .profile-info .info-item .info-value,
   .about .about-content .about-info .education-info .info-item .info-value,
-  .about .about-content .about-info .license-info .info-item .info-value {
+  .about .about-content .about-info .license-info .info-item .info-value,
+  .about .about-content .about-info .experience-info .info-item .info-value {
     font-size: 1.4rem;
   }
 }
 @media (max-width: 599px) {
   .about .about-content .about-info .profile-info .info-item .info-value,
   .about .about-content .about-info .education-info .info-item .info-value,
-  .about .about-content .about-info .license-info .info-item .info-value {
+  .about .about-content .about-info .license-info .info-item .info-value,
+  .about .about-content .about-info .experience-info .info-item .info-value {
     font-size: 1.4rem;
   }
-}
-.about .about-content .about-info .skills-info .skills-list {
-  margin-bottom: 10px;
-}
-.about .about-content .about-info .skills-info .skills-list,
-.about .about-content .about-info .skills-info .skills-list2 {
-  display: flex;
-}
-.about .about-content .about-info .skills-info img {
-  display: block;
-  margin-right: 10px;
-}
-.about .about-content .about-info .skills-info .skill-icon {
-  position: relative;
-  cursor: pointer;
-}
-.about .about-content .about-info .skills-info .skill-icon:hover .icon-color {
-  opacity: 1;
-}
-.about .about-content .about-info .skills-info .skill-icon:hover .icon-dark {
-  opacity: 0;
-}
-.about .about-content .about-info .skills-info .icon-color,
-.about .about-content .about-info .skills-info .icon-dark {
-  transition: opacity 0.3s ease;
-}
-.about .about-content .about-info .skills-info .icon-color {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
 }
 
 .skills {
