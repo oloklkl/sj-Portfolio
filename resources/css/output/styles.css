@@ -353,8 +353,6 @@ legend {
   width: 100%;
   height: 100vh;
   background-color: #fbf0da;
-  background-image: linear-gradient(to right, rgba(60, 50, 30, 0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(60, 50, 30, 0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
 }
 
 .bokjak,
@@ -1241,11 +1239,11 @@ body.is-intro-lock {
 }
 .skills .fade.fade-top {
   top: 0;
-  background: linear-gradient(to bottom, #fbf0da 0%, rgba(251, 240, 218, 0.8) 60%, rgba(251, 240, 218, 0) 100%);
+  background: linear-gradient(to bottom, #fbf0da 0%, rgba(251, 240, 218, 0.8) 40%, rgba(251, 240, 218, 0) 100%);
 }
 .skills .fade.fade-bottom {
   bottom: 0;
-  background: linear-gradient(to top, #fbf0da 0%, rgba(251, 240, 218, 0.8) 60%, rgba(251, 240, 218, 0) 100%);
+  background: linear-gradient(to top, #fbf0da 0%, rgba(251, 240, 218, 0.8) 40%, rgba(251, 240, 218, 0) 100%);
 }
 .skills .skills-list {
   position: relative;
@@ -1287,12 +1285,15 @@ body.is-intro-lock {
 .skills .skills-list .skill-item2 .skill-chart,
 .skills .skills-list .skill-item3 .skill-chart {
   position: relative;
-  background-color: #111111;
+  background: linear-gradient(180deg, #2a2d34 0%, #1b1d22 100%);
+  border: 1px solid rgba(231, 255, 0, 0.2);
+  box-shadow: 0 0 15px rgba(231, 255, 0, 0.3);
   width: 280px;
   height: 260px;
   margin-bottom: 30px;
   border-radius: 10px;
   color: #ffffff;
+  transition: all 0.3s ease;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
   .skills .skills-list .skill-item .skill-chart,
@@ -1319,6 +1320,44 @@ body.is-intro-lock {
     width: 130px;
     height: 190px;
     margin-bottom: 15px;
+  }
+}
+.skills .skills-list .skill-item .skill-chart .icon,
+.skills .skills-list .skill-item2 .skill-chart .icon,
+.skills .skills-list .skill-item3 .skill-chart .icon {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 0 4px rgba(231, 255, 0, 0.75));
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+.skills .skills-list .skill-item .skill-chart .icon.bright,
+.skills .skills-list .skill-item2 .skill-chart .icon.bright,
+.skills .skills-list .skill-item3 .skill-chart .icon.bright {
+  width: 30px;
+  height: 30px;
+  opacity: 1;
+  filter: drop-shadow(0 0 3px rgb(231, 255, 0)) drop-shadow(0 0 6px rgba(231, 255, 0, 0.8));
+}
+@media (min-width: 600px) and (max-width: 999px) {
+  .skills .skills-list .skill-item .skill-chart .icon,
+  .skills .skills-list .skill-item2 .skill-chart .icon,
+  .skills .skills-list .skill-item3 .skill-chart .icon {
+    top: 10px;
+    left: 10px;
+  }
+}
+@media (max-width: 599px) {
+  .skills .skills-list .skill-item .skill-chart .icon,
+  .skills .skills-list .skill-item2 .skill-chart .icon,
+  .skills .skills-list .skill-item3 .skill-chart .icon {
+    top: 10px;
+    left: 10px;
+    width: 18px;
+    height: 18px;
   }
 }
 .skills .skills-list .skill-item .skill-chart svg,
@@ -1436,6 +1475,16 @@ body.is-intro-lock {
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+}
+.skills .skills-list .skill-item .skill-chart .skill-name.small,
+.skills .skills-list .skill-item2 .skill-chart .skill-name.small,
+.skills .skills-list .skill-item3 .skill-chart .skill-name.small {
+  font-size: 0.9em;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  word-break: keep-all;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
   .skills .skills-list .skill-item .skill-chart .skill-name,
@@ -1465,10 +1514,31 @@ body.is-intro-lock {
     font-size: 1.6rem;
   }
 }
+.skills .skills-list .skill-item .skill-chart:hover,
+.skills .skills-list .skill-item2 .skill-chart:hover,
+.skills .skills-list .skill-item3 .skill-chart:hover {
+  border-color: rgba(231, 255, 0, 0.6);
+}
+.skills .skills-list .skill-item .skill-chart:hover .icon,
+.skills .skills-list .skill-item2 .skill-chart:hover .icon,
+.skills .skills-list .skill-item3 .skill-chart:hover .icon {
+  opacity: 1;
+  filter: brightness(0) invert(1) drop-shadow(0 0 10px rgb(231, 255, 0));
+}
+.skills .skills-list .skill-item .skill-chart:hover .icon.bright,
+.skills .skills-list .skill-item2 .skill-chart:hover .icon.bright,
+.skills .skills-list .skill-item3 .skill-chart:hover .icon.bright {
+  filter: brightness(0) invert(1) drop-shadow(0 0 6px rgb(231, 255, 0)) drop-shadow(0 0 12px rgba(231, 255, 0, 0.9));
+}
+.skills .skills-list .skill-item .skill-chart:hover .skill-name,
+.skills .skills-list .skill-item2 .skill-chart:hover .skill-name,
+.skills .skills-list .skill-item3 .skill-chart:hover .skill-name {
+  transform: translate(-50%, -50%) scale(1.08);
+}
 .skills .skills-list .skill-item .skill-chart circle:nth-child(2),
 .skills .skills-list .skill-item2 .skill-chart circle:nth-child(2),
 .skills .skills-list .skill-item3 .skill-chart circle:nth-child(2) {
-  stroke: yellow;
+  stroke: #e7ff00;
   stroke-dasharray: 440px;
   stroke-dashoffset: 440px;
 }

@@ -818,12 +818,12 @@
 
     &.fade-top {
       top: 0;
-      background: linear-gradient(to bottom, $primary 0%, rgba($primary, 0.8) 60%, rgba($primary, 0) 100%);
+      background: linear-gradient(to bottom, $primary 0%, rgba($primary, 0.8) 40%, rgba($primary, 0) 100%);
     }
 
     &.fade-bottom {
       bottom: 0;
-      background: linear-gradient(to top, $primary 0%, rgba($primary, 0.8) 60%, rgba($primary, 0) 100%);
+      background: linear-gradient(to top, $primary 0%, rgba($primary, 0.8) 40%, rgba($primary, 0) 100%);
     }
   }
 
@@ -861,12 +861,15 @@
 
       .skill-chart {
         position: relative;
-        background-color: $gray-90;
+        background: linear-gradient(180deg, #2a2d34 0%, #1b1d22 100%);
+        border: 1px solid rgba(231, 255, 0, 0.2);
+        box-shadow: 0 0 15px rgba(231, 255, 0, 0.3);
         width: 280px;
         height: 260px;
         margin-bottom: 30px;
         border-radius: 10px;
         color: $gray-0;
+        transition: all 0.3s ease;
 
         @include lg-only {
           width: 200px;
@@ -884,6 +887,36 @@
           width: 130px;
           height: 190px;
           margin-bottom: 15px;
+        }
+
+        .icon {
+          position: absolute;
+          top: 15px;
+          left: 15px;
+          width: 24px;
+          height: 24px;
+          filter: drop-shadow(0 0 4px rgba(231, 255, 0, 0.75));
+          opacity: 0.9;
+          transition: all 0.3s ease;
+
+          &.bright {
+            width: 30px;
+            height: 30px;
+            opacity: 1;
+            filter: drop-shadow(0 0 3px rgba(231, 255, 0, 1)) drop-shadow(0 0 6px rgba(231, 255, 0, 0.8));
+          }
+
+          @include md-only {
+            top: 10px;
+            left: 10px;
+          }
+
+          @include sm-only {
+            top: 10px;
+            left: 10px;
+            width: 18px;
+            height: 18px;
+          }
         }
 
         svg {
@@ -961,6 +994,16 @@
           font-size: 3rem;
           font-weight: bold;
           text-align: center;
+          transform-origin: center center;
+          transition: transform 0.3s ease;
+
+          // 2줄로 넘어가는 긴 텍스트 전용 스타일
+          &.small {
+            font-size: 0.9em;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+            word-break: keep-all; // 단어 중간에 어색하게 끊기지 않도록 방지
+          }
 
           @include lg-only {
             font-size: 2.6rem;
@@ -979,6 +1022,23 @@
           }
         }
       }
+
+      .skill-chart:hover {
+        border-color: rgba(231, 255, 0, 0.6);
+
+        .icon {
+          opacity: 1;
+
+          filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(231, 255, 0, 1));
+        }
+        .icon.bright {
+          filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(231, 255, 0, 1)) drop-shadow(0 0 12px rgba(231, 255, 0, 0.9));
+        }
+
+        .skill-name {
+          transform: translate(-50%, -50%) scale(1.08);
+        }
+      }
     }
 
     .skill-item,
@@ -986,7 +1046,7 @@
     .skill-item3 {
       .skill-chart {
         circle:nth-child(2) {
-          stroke: yellow;
+          stroke: #e7ff00;
           stroke-dasharray: 440px;
           stroke-dashoffset: 440px;
         }
