@@ -1579,59 +1579,94 @@
 
   a {
     position: relative;
-    display: flex;
-    color: yellow;
-    font-size: 3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: $gray-20;
+    gap: 12px;
+
+    font-size: 2.6rem;
+    padding: 12px 32px;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
 
     @include md-only {
-      font-size: 2.6rem;
+      font-size: 2.2rem;
+      padding: 10px 24px;
+    }
+    @include sm-only {
+      font-size: 1.8rem;
+      padding: 8px 20px;
     }
 
-    @include sm-only {
-      font-size: 2.4rem;
+    .git-icon {
+      width: 26px;
+      height: 26px;
+      fill: $gray-10;
+      transition:
+        fill 0.3s ease,
+        transform 0.3s ease;
+
+      @include md-only {
+        width: 22px;
+        height: 22px;
+      }
     }
 
     .text-wrapper {
       position: relative;
-      display: inline-block;
-      flex-direction: column;
-      align-items: center;
-      height: 100%;
-      pointer-events: none;
+      display: block;
+      overflow: hidden;
+      height: 1.25em;
+      width: 4.8em;
+      line-height: 1.25;
     }
 
     .text-top,
     .text-bottom {
       position: absolute;
+      top: 0;
       left: 0;
-      width: 100%;
       display: flex;
       align-items: center;
-      transition:
-        transform 0.3s ease-in-out,
-        opacity 0.3s ease-in-out;
-      pointer-events: auto;
+      white-space: nowrap;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+      .material-icons {
+        font-size: 1em;
+        margin-left: 4px;
+      }
     }
 
     .text-top {
       transform: translateY(0);
-      opacity: 1;
     }
 
     .text-bottom {
       transform: translateY(100%);
-      opacity: 0;
+      color: $gray-90;
     }
 
     &:hover {
+      background-color: $white;
+      border-color: $white;
+      color: $gray-90;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+
       .text-top {
         transform: translateY(-100%);
-        opacity: 0;
       }
-
       .text-bottom {
         transform: translateY(0);
-        opacity: 1;
+      }
+      .git-icon {
+        fill: $gray-90;
+        transform: rotate(8deg) scale(1.08);
       }
     }
   }
@@ -1648,7 +1683,7 @@
     flex-wrap: wrap;
     line-height: 1;
     overflow: hidden;
-    padding: 200px 0 0;
+    padding: 140px 0 0;
 
     @media (max-width: 1699px) {
       font-size: 33rem;
@@ -1679,7 +1714,7 @@
 
     @include md-only {
       font-size: 18rem;
-      padding: 300px 0 0;
+      padding: 200px 0 0;
     }
 
     @media (max-width: 899px) {
