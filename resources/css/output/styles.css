@@ -1695,6 +1695,50 @@ body.is-intro-lock {
 .hanatour .project-description {
   padding-top: 250px;
 }
+.mr-pizza .project-description .project-tags,
+.bokjak .project-description .project-tags,
+.popmart .project-description .project-tags,
+.gucci .project-description .project-tags,
+.hanatour .project-description .project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.mr-pizza .project-description .project-tags span,
+.bokjak .project-description .project-tags span,
+.popmart .project-description .project-tags span,
+.gucci .project-description .project-tags span,
+.hanatour .project-description .project-tags span {
+  padding: 4px 12px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #bdbdbd;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+@media (min-width: 600px) and (max-width: 999px) {
+  .mr-pizza .project-description .project-tags span,
+  .bokjak .project-description .project-tags span,
+  .popmart .project-description .project-tags span,
+  .gucci .project-description .project-tags span,
+  .hanatour .project-description .project-tags span {
+    font-size: 1.2rem;
+    padding: 3px 10px;
+  }
+}
+@media (max-width: 599px) {
+  .mr-pizza .project-description .project-tags span,
+  .bokjak .project-description .project-tags span,
+  .popmart .project-description .project-tags span,
+  .gucci .project-description .project-tags span,
+  .hanatour .project-description .project-tags span {
+    font-size: 1.1rem;
+    padding: 2px 8px;
+  }
+}
 .mr-pizza .project-description .project-type,
 .bokjak .project-description .project-type,
 .popmart .project-description .project-type,
@@ -1772,28 +1816,11 @@ body.is-intro-lock {
 .popmart .project-description .contribution,
 .gucci .project-description .contribution,
 .hanatour .project-description .contribution {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   margin-bottom: 10px;
+  color: #bdbdbd;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
-  .mr-pizza .project-description .contribution,
-  .bokjak .project-description .contribution,
-  .popmart .project-description .contribution,
-  .gucci .project-description .contribution,
-  .hanatour .project-description .contribution {
-    font-size: 2.3rem;
-  }
-}
-@media (min-width: 600px) and (max-width: 999px) {
-  .mr-pizza .project-description .contribution,
-  .bokjak .project-description .contribution,
-  .popmart .project-description .contribution,
-  .gucci .project-description .contribution,
-  .hanatour .project-description .contribution {
-    font-size: 2.1rem;
-  }
-}
-@media (max-width: 599px) {
   .mr-pizza .project-description .contribution,
   .bokjak .project-description .contribution,
   .popmart .project-description .contribution,
@@ -1802,41 +1829,33 @@ body.is-intro-lock {
     font-size: 2rem;
   }
 }
+@media (min-width: 600px) and (max-width: 999px) {
+  .mr-pizza .project-description .contribution,
+  .bokjak .project-description .contribution,
+  .popmart .project-description .contribution,
+  .gucci .project-description .contribution,
+  .hanatour .project-description .contribution {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 599px) {
+  .mr-pizza .project-description .contribution,
+  .bokjak .project-description .contribution,
+  .popmart .project-description .contribution,
+  .gucci .project-description .contribution,
+  .hanatour .project-description .contribution {
+    font-size: 1.6rem;
+  }
+}
 .mr-pizza .project-description .contribution span,
 .bokjak .project-description .contribution span,
 .popmart .project-description .contribution span,
 .gucci .project-description .contribution span,
 .hanatour .project-description .contribution span {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #0052cc;
-}
-@media (min-width: 1000px) and (max-width: 1399px) {
-  .mr-pizza .project-description .contribution span,
-  .bokjak .project-description .contribution span,
-  .popmart .project-description .contribution span,
-  .gucci .project-description .contribution span,
-  .hanatour .project-description .contribution span {
-    font-size: 2.8rem;
-  }
-}
-@media (min-width: 600px) and (max-width: 999px) {
-  .mr-pizza .project-description .contribution span,
-  .bokjak .project-description .contribution span,
-  .popmart .project-description .contribution span,
-  .gucci .project-description .contribution span,
-  .hanatour .project-description .contribution span {
-    font-size: 2.4rem;
-  }
-}
-@media (max-width: 599px) {
-  .mr-pizza .project-description .contribution span,
-  .bokjak .project-description .contribution span,
-  .popmart .project-description .contribution span,
-  .gucci .project-description .contribution span,
-  .hanatour .project-description .contribution span {
-    font-size: 2.2rem;
-  }
+  font-size: 1.15em;
+  font-weight: 700;
+  color: #fbf0da;
+  margin-left: 6px;
 }
 .mr-pizza .project-description .project-summary,
 .bokjak .project-description .project-summary,
@@ -1878,32 +1897,12 @@ body.is-intro-lock {
 .popmart .project-description .view-project-button,
 .gucci .project-description .view-project-button,
 .hanatour .project-description .view-project-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: #ffffff;
   margin-bottom: 20px;
-  transition: all 0.3s ease;
-}
-.mr-pizza .project-description .view-project-button:hover,
-.bokjak .project-description .view-project-button:hover,
-.popmart .project-description .view-project-button:hover,
-.gucci .project-description .view-project-button:hover,
-.hanatour .project-description .view-project-button:hover {
-  color: yellow;
-  transform: scale(1.08);
-}
-.mr-pizza .project-description .view-project-button:hover span,
-.bokjak .project-description .view-project-button:hover span,
-.popmart .project-description .view-project-button:hover span,
-.gucci .project-description .view-project-button:hover span,
-.hanatour .project-description .view-project-button:hover span {
-  border: 2px solid yellow;
-  background-color: rgba(255, 255, 0, 0.1);
-}
-.mr-pizza .project-description .view-project-button span,
-.bokjak .project-description .view-project-button span,
-.popmart .project-description .view-project-button span,
-.gucci .project-description .view-project-button span,
-.hanatour .project-description .view-project-button span {
+  text-decoration: none;
   border: 2px solid #ffffff;
   padding: 5px 20px;
   border-radius: 40px;
@@ -1911,61 +1910,56 @@ body.is-intro-lock {
   transition: all 0.3s ease;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {
-  .mr-pizza .project-description .view-project-button span,
-  .bokjak .project-description .view-project-button span,
-  .popmart .project-description .view-project-button span,
-  .gucci .project-description .view-project-button span,
-  .hanatour .project-description .view-project-button span {
+  .mr-pizza .project-description .view-project-button,
+  .bokjak .project-description .view-project-button,
+  .popmart .project-description .view-project-button,
+  .gucci .project-description .view-project-button,
+  .hanatour .project-description .view-project-button {
     font-size: 2.8rem;
   }
 }
 @media (min-width: 600px) and (max-width: 999px) {
-  .mr-pizza .project-description .view-project-button span,
-  .bokjak .project-description .view-project-button span,
-  .popmart .project-description .view-project-button span,
-  .gucci .project-description .view-project-button span,
-  .hanatour .project-description .view-project-button span {
+  .mr-pizza .project-description .view-project-button,
+  .bokjak .project-description .view-project-button,
+  .popmart .project-description .view-project-button,
+  .gucci .project-description .view-project-button,
+  .hanatour .project-description .view-project-button {
     font-size: 2.4rem;
   }
 }
 @media (max-width: 599px) {
-  .mr-pizza .project-description .view-project-button span,
-  .bokjak .project-description .view-project-button span,
-  .popmart .project-description .view-project-button span,
-  .gucci .project-description .view-project-button span,
-  .hanatour .project-description .view-project-button span {
+  .mr-pizza .project-description .view-project-button,
+  .bokjak .project-description .view-project-button,
+  .popmart .project-description .view-project-button,
+  .gucci .project-description .view-project-button,
+  .hanatour .project-description .view-project-button {
     font-size: 2rem;
   }
 }
-.mr-pizza .project-description .renewal,
-.bokjak .project-description .renewal,
-.popmart .project-description .renewal,
-.gucci .project-description .renewal,
-.hanatour .project-description .renewal {
-  color: red;
-  transition: all 0.3s ease;
+.mr-pizza .project-description .view-project-button .material-icons,
+.bokjak .project-description .view-project-button .material-icons,
+.popmart .project-description .view-project-button .material-icons,
+.gucci .project-description .view-project-button .material-icons,
+.hanatour .project-description .view-project-button .material-icons {
+  font-size: 1.1em;
+  transition: transform 0.3s ease;
 }
-.mr-pizza .project-description .renewal:hover,
-.bokjak .project-description .renewal:hover,
-.popmart .project-description .renewal:hover,
-.gucci .project-description .renewal:hover,
-.hanatour .project-description .renewal:hover {
-  color: yellow;
+.mr-pizza .project-description .view-project-button:hover,
+.bokjak .project-description .view-project-button:hover,
+.popmart .project-description .view-project-button:hover,
+.gucci .project-description .view-project-button:hover,
+.hanatour .project-description .view-project-button:hover {
+  background-color: #fff;
+  color: #111111;
+  border-color: #fff;
+  transform: translateY(-2px);
 }
-.mr-pizza .project-description .renewal:hover span,
-.bokjak .project-description .renewal:hover span,
-.popmart .project-description .renewal:hover span,
-.gucci .project-description .renewal:hover span,
-.hanatour .project-description .renewal:hover span {
-  border: 2px solid yellow;
-}
-.mr-pizza .project-description .renewal p,
-.bokjak .project-description .renewal p,
-.popmart .project-description .renewal p,
-.gucci .project-description .renewal p,
-.hanatour .project-description .renewal p {
-  display: inline;
-  color: #ffffff;
+.mr-pizza .project-description .view-project-button:hover .material-icons,
+.bokjak .project-description .view-project-button:hover .material-icons,
+.popmart .project-description .view-project-button:hover .material-icons,
+.gucci .project-description .view-project-button:hover .material-icons,
+.hanatour .project-description .view-project-button:hover .material-icons {
+  transform: translate(2px, -2px);
 }
 .mr-pizza .project-progress span,
 .bokjak .project-progress span,
