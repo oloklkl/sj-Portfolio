@@ -1741,7 +1741,7 @@ body.is-intro-lock {
 .popmart .project-description,
 .gucci .project-description,
 .hanatour .project-description {
-  padding-top: 250px;
+  padding-top: 240px;
 }
 .mr-pizza .project-description .project-tags,
 .bokjak .project-description .project-tags,
@@ -1910,7 +1910,6 @@ body.is-intro-lock {
 .popmart .project-description .project-summary,
 .gucci .project-description .project-summary,
 .hanatour .project-description .project-summary {
-  width: 60%;
   margin-bottom: 30px;
 }
 @media (min-width: 1000px) and (max-width: 1399px) {

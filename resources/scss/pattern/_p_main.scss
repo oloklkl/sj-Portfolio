@@ -1233,7 +1233,7 @@
   }
 
   .project-description {
-    padding-top: 250px;
+    padding-top: 240px;
 
     .project-tags {
       display: flex;
@@ -1323,7 +1323,6 @@
     }
 
     .project-summary {
-      width: 60%;
       margin-bottom: 30px;
 
       @include lg-only {
