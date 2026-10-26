@@ -611,12 +611,35 @@ body.is-intro-lock {
   pointer-events: none;
   z-index: 1;
 }
+@media (min-width: 1000px) and (max-width: 1399px) {
+  .moon-glow {
+    width: 480px;
+    height: 480px;
+  }
+}
+@media (min-width: 600px) and (max-width: 999px) {
+  .moon-glow {
+    width: 400px;
+    height: 400px;
+    top: 18%;
+    left: 50%;
+  }
+}
+@media (max-width: 599px) {
+  .moon-glow {
+    width: 320px;
+    height: 320px;
+    top: 20%;
+    left: 50%;
+    filter: blur(45px);
+  }
+}
 
 .moon-sphere {
   position: absolute;
   top: 16%;
   left: 55%;
-  margin-left: -240px;
+  margin-left: -210px;
   width: 420px;
   height: 420px;
   border-radius: 50%;
@@ -632,6 +655,31 @@ body.is-intro-lock {
   z-index: 1;
   pointer-events: none;
   animation: floatMoon 6s ease-in-out infinite alternate;
+}
+@media (min-width: 1000px) and (max-width: 1399px) {
+  .moon-sphere {
+    width: 360px;
+    height: 360px;
+    margin-left: -180px;
+  }
+}
+@media (min-width: 600px) and (max-width: 999px) {
+  .moon-sphere {
+    width: 300px;
+    height: 300px;
+    left: 50%;
+    margin-left: -150px;
+    top: 18%;
+  }
+}
+@media (max-width: 599px) {
+  .moon-sphere {
+    width: 230px;
+    height: 230px;
+    left: 50%;
+    margin-left: -115px;
+    top: 20%;
+  }
 }
 
 @keyframes floatMoon {
